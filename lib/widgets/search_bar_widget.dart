@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grocery_app/screens/SearchScreen.dart';
 
 class SearchBarWidget extends StatelessWidget {
   final String searchIcon = "assets/icons/search_icon.svg";
@@ -9,6 +10,7 @@ class SearchBarWidget extends StatelessWidget {
     return InkWell(
       onTap: (){
         //Navigate to search screen
+        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SearchScreen()));
       },
       child: Container(
         padding: EdgeInsets.all(16),

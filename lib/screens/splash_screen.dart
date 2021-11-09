@@ -7,7 +7,6 @@ import 'package:grocery_app/helpers/custom_trace.dart';
 import 'package:grocery_app/repositories/UserRepository.dart';
 import 'package:grocery_app/screens/welcome_screen.dart';
 import 'package:grocery_app/styles/colors.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,30 +24,19 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    const delay = const Duration(seconds: 3);
-    Future.delayed(delay, () => onTimerFinished());
-    //initialFunction();
+    initialFunction();
   }
 
-  void onTimerFinished() {
-    Navigator.of(context).pushReplacement(new MaterialPageRoute(
-      builder: (BuildContext context) {
-        return WelcomeScreen();
-      },
-    ));
-  }
 
   initialFunction() async{
     WidgetsFlutterBinding.ensureInitialized();
     await GlobalConfiguration().loadFromAsset("configurations");
     await Firebase.initializeApp().then((value) async {
-      // Navigator.pushReplacement(context, MaterialPageRoute(
-      //   builder: (BuildContext context) {
-      //     return WelcomeScreen();
-      //   },
-      // ));
-
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(
+        builder: (BuildContext context) {
+          return WelcomeScreen();
+        },
+      ));
     });
 
     print(CustomTrace(StackTrace.current, message: "base_url: ${GlobalConfiguration().getValue('base_url')}"));
@@ -61,7 +49,7 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.darkGrey,
       body: Center(
         child: splashScreenIcon(),
       ),
@@ -70,8 +58,9 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
 }
 
 Widget splashScreenIcon() {
-  String iconPath = "assets/icons/splash_screen_icon.svg";
-  return SvgPicture.asset(
+  String iconPath = "assets/images/bizol_logo.png";
+  return Image.asset(
     iconPath,
+    scale: 7,
   );
 }

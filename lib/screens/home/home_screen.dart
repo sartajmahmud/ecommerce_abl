@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/widgets/HomeSliderWidget.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
 import 'package:grocery_app/styles/colors.dart';
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
                     height: 15,
                   ),
                   //Image.asset("assets/images/grocery_images/engine-oil.jpg", scale: 7,),
+
                   SizedBox(
                     height: 5,
                   ),
@@ -34,21 +36,22 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 25,
                   ),
-                  padded(HomeBanner()),
+                  HomeSliderWidget(),
+                  //padded(HomeBanner()),
                   SizedBox(
                     height: 25,
                   ),
-                  padded(subTitle("Exclusive Order")),
+                  padded(subTitle("Top Categories")),
                   getHorizontalItemSlider(exclusiveOffers),
                   SizedBox(
                     height: 15,
                   ),
-                  padded(subTitle("Best Selling")),
+                  padded(subTitle("Today's Deal")),
                   getHorizontalItemSlider(bestSelling),
                   SizedBox(
                     height: 15,
                   ),
-                  padded(subTitle("Engine Oils")),
+                  padded(subTitle("Flash Sale")),
                   SizedBox(
                     height: 15,
                   ),
@@ -85,6 +88,12 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
+                  padded(subTitle("Featured Products")),
+                  getHorizontalItemSlider(bestSelling),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  padded(subTitle("Our Dealers")),
                 ],
               ),
             ),

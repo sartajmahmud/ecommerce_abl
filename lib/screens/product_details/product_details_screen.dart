@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/grocery_item.dart';
+import 'package:grocery_app/styles/colors.dart';
+import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
 import 'package:grocery_app/widgets/item_counter_widget.dart';
 
 import 'favourite_toggle_icon_widget.dart';
@@ -24,76 +26,171 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            padding: EdgeInsets.only(left: 25),
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        title: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 25,
+          ),
+          child: AppText(
+            text: '',
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: SafeArea(
-        child: Column(
-          children: [
-            getImageHeaderWidget(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  children: [
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(
-                        widget.groceryItem.name,
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: AppText(
-                        text: widget.groceryItem.description,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff7C7C7C),
-                      ),
-                      trailing: FavoriteToggleIcon(),
-                    ),
-                    Spacer(),
-                    Row(
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height+340,
+            child: Column(
+              children: [
+                getImageHeaderWidget(),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
                       children: [
-                        ItemCounterWidget(
-                          onAmountChanged: (newAmount) {
-                            setState(() {
-                              amount = newAmount;
-                            });
-                          },
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            widget.groceryItem.name,
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: AppText(
+                            text: widget.groceryItem.description,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff7C7C7C),
+                          ),
+                          trailing: FavoriteToggleIcon(),
                         ),
                         Spacer(),
-                        Text(
-                          "\$${getTotalPrice().toStringAsFixed(2)}",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        Row(
+                          children: [
+                            ItemCounterWidget(
+                              onAmountChanged: (newAmount) {
+                                setState(() {
+                                  amount = newAmount;
+                                });
+                              },
+                            ),
+                            Spacer(),
+                            Text(
+                              "\৳${getTotalPrice().toStringAsFixed(2)}",
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Spacer(),
+                        Divider(thickness: 1),
+                        getProductDataRowWidget("Product Details"),
+                        Divider(thickness: 1),
+                        getProductDataRowWidget("Nutritions",
+                            customWidget: nutritionWidget()),
+                        Divider(thickness: 1),
+                        getProductDataRowWidget(
+                          "Review",
+                          customWidget: ratingWidget(),
+                        ),
+                        Spacer(),
+                        AppButton(
+                          label: "Add To Basket",
+                        ),
+                        Spacer(),
+
                       ],
                     ),
-                    Spacer(),
-                    Divider(thickness: 1),
-                    getProductDataRowWidget("Product Details"),
-                    Divider(thickness: 1),
-                    getProductDataRowWidget("Nutritions",
-                        customWidget: nutritionWidget()),
-                    Divider(thickness: 1),
-                    getProductDataRowWidget(
-                      "Review",
-                      customWidget: ratingWidget(),
-                    ),
-                    Spacer(),
-                    AppButton(
-                      label: "Add To Basket",
-                    ),
-                    Spacer(),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(height: 20,),
+                padded(subTitle("Related Products")),
+                getHorizontalItemSlider(exclusiveOffers),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
+  void onItemClicked(BuildContext context, GroceryItem groceryItem) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ProductDetailsScreen(groceryItem)),
+    );
+  }
 
+  Widget getHorizontalItemSlider(List<GroceryItem> items) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      height: 250,
+      child: ListView.separated(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        itemCount: items.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              onItemClicked(context, items[index]);
+            },
+            child: GroceryItemCardWidget(
+              item: items[index],
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(
+            width: 20,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget padded(Widget widget) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: widget,
+    );
+  }
+  Widget subTitle(String text) {
+    return Row(
+      children: [
+        Text(
+          text,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        Spacer(),
+        Text(
+          "See All",
+          style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryColor),
+        ),
+      ],
+    );
+  }
   Widget getImageHeaderWidget() {
     return Container(
       height: 250,
@@ -122,26 +219,45 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
   Widget getProductDataRowWidget(String label, {Widget customWidget}) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: 20,
-        bottom: 20,
-      ),
-      child: Row(
-        children: [
-          AppText(text: label, fontWeight: FontWeight.w600, fontSize: 16),
-          Spacer(),
-          if (customWidget != null) ...[
-            customWidget,
-            SizedBox(
-              width: 20,
-            )
+    bool expanded = false;
+    return InkWell(
+      onTap: (){
+
+        setState(() {
+
+          expanded ? expanded = false : expanded = true;
+          print(expanded);
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.only(
+          top: 20,
+          bottom: 20,
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                AppText(text: label, fontWeight: FontWeight.w600, fontSize: 16),
+                Spacer(),
+                if (customWidget != null) ...[
+                  customWidget,
+                  SizedBox(
+                    width: 20,
+                  )
+                ],
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 20,
+                )
+              ],
+            ),
+            Text("Test"),
+            expanded ? Container(
+              child: Text('hello'),
+            ) : SizedBox(),
           ],
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 20,
-          )
-        ],
+        ),
       ),
     );
   }

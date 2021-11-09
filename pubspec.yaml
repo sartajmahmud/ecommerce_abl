@@ -21,6 +21,9 @@ dependencies:
   shared_preferences: ^0.5.12+2
   location: 3.0.2
   firebase_messaging: 7.0.3
+  carousel_slider: 2.3.1
+  cached_network_image: 2.3.3
+  fluttertoast: 4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -39,6 +42,7 @@ flutter:
     - assets/icons/
     - assets/icons/account_icons/
     - assets/fonts/
+    - assets/cfg/
 
   fonts:
     - family: Gilroy

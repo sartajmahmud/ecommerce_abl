@@ -7,18 +7,18 @@ import 'package:grocery_app/styles/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  final String imagePath = "assets/images/welcome_image.png";
+  final String imagePath = "assets/images/welcom.jpg";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Colors.black,
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(imagePath),
-              fit: BoxFit.cover,
+              fit: BoxFit.none,
             ),
           ),
           child: Center(
@@ -26,11 +26,11 @@ class WelcomeScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Spacer(),
-                icon(),
+                //icon(),
                 SizedBox(
                   height: 20,
                 ),
-                welcomeTextWidget(),
+                //welcomeTextWidget(),
                 SizedBox(
                   height: 10,
                 ),

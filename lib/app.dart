@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/screens/LoginScreen.dart';
 import 'package:grocery_app/screens/splash_screen.dart';
 import 'package:grocery_app/styles/theme.dart';
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: themeData,
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

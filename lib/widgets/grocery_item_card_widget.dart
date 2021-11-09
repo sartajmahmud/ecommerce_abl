@@ -78,18 +78,25 @@ class GroceryItemCardWidget extends StatelessWidget {
     );
   }
 
+  //Plus widget
+
   Widget addWidget() {
-    return Container(
-      height: 45,
-      width: 45,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(17),
-          color: AppColors.primaryColor),
-      child: Center(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 25,
+    return InkWell(
+      onTap: (){
+        //add to cart function here
+      },
+      child: Container(
+        height: 45,
+        width: 45,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(17),
+            color: AppColors.primaryColor),
+        child: Center(
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 25,
+          ),
         ),
       ),
     );
