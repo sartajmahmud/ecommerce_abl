@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:grocery_app/widgets/CircularLoadingWidget.dart';
 
 class Helper {
   BuildContext context;
@@ -18,6 +21,31 @@ class Helper {
         port: Uri.parse(GlobalConfiguration().getValue('base_url')).port,
         path: _path + path);
     return uri;
+  }
+
+  static hideLoader(OverlayEntry loader) {
+    Timer(Duration(milliseconds: 500), () {
+      try {
+        loader?.remove();
+      } catch (e) {}
+    });
+  }
+
+  static OverlayEntry overlayLoader(context) {
+    OverlayEntry loader = OverlayEntry(builder: (context) {
+      final size = MediaQuery.of(context).size;
+      return Positioned(
+        height: size.height,
+        width: size.width,
+        top: 0,
+        left: 0,
+        child: Material(
+          color: Theme.of(context).primaryColor.withOpacity(0.85),
+          child: CircularLoadingWidget(height: 200),
+        ),
+      );
+    });
+    return loader;
   }
 
   static getData(Map<String, dynamic> data) {
@@ -69,6 +97,9 @@ class Helper {
     }
   }
 
+  static int getIntData(Map<String, dynamic> data) {
+    return (int.parse(data['data'].toString()) as int) ?? 0;
+  }
 
   Color getColorFromHex(String hex) {
     if (hex.contains('#')) {
@@ -76,6 +107,10 @@ class Helper {
     } else {
       return Color(int.parse("0xFF" + hex));
     }
+  }
+
+  static bool getBoolData(Map<String, dynamic> data) {
+    return (data['data'] as bool) ?? false;
   }
 
 }

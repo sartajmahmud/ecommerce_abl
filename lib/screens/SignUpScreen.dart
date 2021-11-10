@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/controllers/UserController.dart';
 import 'package:grocery_app/screens/LoginScreen.dart';
+import 'package:grocery_app/screens/SignUpOTPScreen.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import 'ForgetPasswordOTPScreen.dart';
@@ -176,7 +177,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            ForgetPasswordOTPScreen(
+                                            SignUpOTPScreen(
                                                 myController.text
                                                     .toString(),
                                                 _con)));

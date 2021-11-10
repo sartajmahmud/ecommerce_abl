@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/controllers/HomeScreenController.dart';
+import 'package:grocery_app/widgets/DealerCardWidget.dart';
 import 'package:grocery_app/widgets/HomeSliderWidget.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
@@ -6,95 +9,124 @@ import 'package:grocery_app/styles/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
 import 'package:grocery_app/widgets/search_bar_widget.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
 import 'grocery_featured_Item_widget.dart';
 import 'home_banner_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  final GlobalKey<ScaffoldState> parentScaffoldKey;
+
+  HomeScreen({Key key, this.parentScaffoldKey}) : super(key: key);
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends StateMVC<HomeScreen> {
+  HomeScreenController _con;
+  _HomeScreenState() : super(HomeScreenController()) {
+    _con = controller;
+  }
+
+  Future<void> refresh() async {
+    // _showDialog();
+    await _con.refreshHome();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 15,
-                  ),
-                  //Image.asset("assets/images/grocery_images/engine-oil.jpg", scale: 7,),
+          child: RefreshIndicator(
+            onRefresh: refresh,
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 15,
+                    ),
+                    //Image.asset("assets/images/grocery_images/engine-oil.jpg", scale: 7,),
 
-                  SizedBox(
-                    height: 5,
-                  ),
-                  padded(locationWidget()),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  padded(SearchBarWidget()),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  HomeSliderWidget(),
-                  //padded(HomeBanner()),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  padded(subTitle("Top Categories")),
-                  getHorizontalItemSlider(exclusiveOffers),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  padded(subTitle("Today's Deal")),
-                  getHorizontalItemSlider(bestSelling),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  padded(subTitle("Flash Sale")),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  // Container(
-                  //   height: 105,
-                  //   child: ListView(
-                  //     padding: EdgeInsets.zero,
-                  //     scrollDirection: Axis.horizontal,
-                  //     children: [
-                  //       SizedBox(
-                  //         width: 20,
-                  //       ),
-                  //       GroceryFeaturedCard(
-                  //         groceryFeaturedItems[0],
-                  //         color: Color(0xffF8A44C),
-                  //       ),
-                  //       SizedBox(
-                  //         width: 20,
-                  //       ),
-                  //       GroceryFeaturedCard(
-                  //         groceryFeaturedItems[1],
-                  //         color: AppColors.primaryColor,
-                  //       ),
-                  //       SizedBox(
-                  //         width: 20,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 15,
-                  // ),
-                  getHorizontalItemSlider(groceries),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  padded(subTitle("Featured Products")),
-                  getHorizontalItemSlider(bestSelling),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  padded(subTitle("Our Dealers")),
-                ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    padded(locationWidget()),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(SearchBarWidget()),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    HomeSliderWidget(),
+                    //padded(HomeBanner()),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    padded(subTitle("Top Categories")),
+                    getHorizontalItemSlider(exclusiveOffers),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(subTitle("Today's Deal")),
+                    getHorizontalItemSlider(bestSelling),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(subTitle("Flash Sale")),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    // Container(
+                    //   height: 105,
+                    //   child: ListView(
+                    //     padding: EdgeInsets.zero,
+                    //     scrollDirection: Axis.horizontal,
+                    //     children: [
+                    //       SizedBox(
+                    //         width: 20,
+                    //       ),
+                    //       GroceryFeaturedCard(
+                    //         groceryFeaturedItems[0],
+                    //         color: Color(0xffF8A44C),
+                    //       ),
+                    //       SizedBox(
+                    //         width: 20,
+                    //       ),
+                    //       GroceryFeaturedCard(
+                    //         groceryFeaturedItems[1],
+                    //         color: AppColors.primaryColor,
+                    //       ),
+                    //       SizedBox(
+                    //         width: 20,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    getHorizontalItemSlider(groceries),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(subTitle("Featured Products")),
+                    getHorizontalItemSlider(bestSelling),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(subTitle("Our Dealers")),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    padded(DealerCardWidget("AXYZ imports", "assets/images/Banner_mobil.jpg", 'Dhanmondi, Dhaka')),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

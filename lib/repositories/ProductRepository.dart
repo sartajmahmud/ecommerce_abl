@@ -43,14 +43,14 @@ Future<Stream<Product>> searchProducts(String search, Address address, String Mi
 }
 
 Future<Review> addProductReview(Review review, Product product) async {
-  final String url = '${GlobalConfiguration().getValue('api_base_url')}food_reviews';
+  final String url = '${GlobalConfiguration().getValue('api_base_url')}product_reviews';
   final client = new http.Client();
   review.user = userRepo.currentUser.value;
   try {
     final response = await client.post(
       url,
       headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-      body: json.encode(review.ofFoodToMap(product)),
+      body: json.encode(review.ofProductToMap(product)),
     );
     if (response.statusCode == 200) {
       return Review.fromJSON(json.decode(response.body)['data']);

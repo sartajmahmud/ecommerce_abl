@@ -68,5 +68,8 @@ class User{
     map['password_confirmation']=ConfirmPassword;
     return map;
   }
+  bool profileCompleted() {
+    return address != null && address != '' && phone != null && phone != '';
+  }
 
 }

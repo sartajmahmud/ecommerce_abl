@@ -129,7 +129,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                               onPressed: () async {
                                 print('${_con.user.email}');
                                 print('${_con.user.password}');
-                               // await _con.login().then((value) {});
+                                _con.login();
                                 // print(currentUser.value.name);
                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardScreen()));
                               },

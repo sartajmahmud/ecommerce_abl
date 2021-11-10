@@ -44,13 +44,13 @@ class Review {
     return this.toMap().toString();
   }
 
-  Map ofRestaurantToMap(Dealer dealer) {
+  Map ofDealerToMap(Dealer dealer) {
     var map = this.toMap();
     map["dealer_id"] = dealer.id;
     return map;
   }
 
-  Map ofFoodToMap(Product product) {
+  Map ofProductToMap(Product product) {
     var map = this.toMap();
     map["product_id"] = product.id;
     return map;

@@ -57,7 +57,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height+340,
+            height: MediaQuery.of(context).size.height+342,
             child: Column(
               children: [
                 getImageHeaderWidget(),
@@ -105,9 +105,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         Divider(thickness: 1),
                         getProductDataRowWidget("Product Details"),
                         Divider(thickness: 1),
-                        getProductDataRowWidget("Nutritions",
-                            customWidget: nutritionWidget()),
-                        Divider(thickness: 1),
+                        // getProductDataRowWidget("Nutritions",
+                        //     customWidget: nutritionWidget()),
+                        // Divider(thickness: 1),
                         getProductDataRowWidget(
                           "Review",
                           customWidget: ratingWidget(),
@@ -220,44 +220,54 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   Widget getProductDataRowWidget(String label, {Widget customWidget}) {
     bool expanded = false;
-    return InkWell(
-      onTap: (){
-
-        setState(() {
-
-          expanded ? expanded = false : expanded = true;
-          print(expanded);
-        });
-      },
-      child: Container(
-        margin: EdgeInsets.only(
-          top: 20,
-          bottom: 20,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                AppText(text: label, fontWeight: FontWeight.w600, fontSize: 16),
-                Spacer(),
-                if (customWidget != null) ...[
-                  customWidget,
-                  SizedBox(
-                    width: 20,
-                  )
-                ],
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                )
-              ],
+    return Container(
+      margin: EdgeInsets.only(
+        top: 20,
+        bottom: 20,
+      ),
+      child: Column(
+        children: [
+          // Row(
+          //   children: [
+          //     AppText(text: label, fontWeight: FontWeight.w600, fontSize: 16),
+          //     Spacer(),
+          //     if (customWidget != null) ...[
+          //       customWidget,
+          //       SizedBox(
+          //         width: 20,
+          //       )
+          //     ],
+          //     Icon(
+          //       Icons.arrow_forward_ios,
+          //       size: 20,
+          //     )
+          //   ],
+          // ),
+          // Text("Test"),
+          // expanded ? Container(
+          //   child: Text('hello'),
+          // ) : SizedBox(),
+          ExpansionTile(
+            title: Text(
+              label,
+              style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold
+              ),
             ),
-            Text("Test"),
-            expanded ? Container(
-              child: Text('hello'),
-            ) : SizedBox(),
-          ],
-        ),
+            children: <Widget>[
+              // ExpansionTile(
+              //   title: Text(
+              //     'Descriptions',
+              //   ),
+              // ),
+              ListTile(
+                title:
+                    AppText(text: "Details", fontWeight: FontWeight.w600, fontSize: 16),
+              )
+            ],
+          )
+        ],
       ),
     );
   }

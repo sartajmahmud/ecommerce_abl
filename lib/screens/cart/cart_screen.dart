@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
 import 'package:grocery_app/models/grocery_item.dart';
+import 'package:grocery_app/screens/DeliveryMethodScreen.dart';
 import 'package:grocery_app/widgets/chart_item_widget.dart';
 
 import 'checkout_bottom_sheet.dart';
@@ -68,7 +69,9 @@ class CartScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 30),
         trailingWidget: getButtonPriceWidget(),
         onPressed: () {
-          showBottomSheet(context);
+          //showBottomSheet(context);
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DeliveryMethodScreen()));
+          //navigate to checkoutScreen
         },
       ),
     );
@@ -82,7 +85,7 @@ class CartScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
-        "\$12.96",
+        "\৳12.96",
         style: TextStyle(fontWeight: FontWeight.w600),
       ),
     );
