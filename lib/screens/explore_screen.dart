@@ -73,7 +73,7 @@ class ExploreScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: CategoryItemCardWidget(
               item: categoryItem,
-              color: gridColors[index % gridColors.length],
+              //color: gridColors[index % gridColors.length],
             ),
           ),
         );

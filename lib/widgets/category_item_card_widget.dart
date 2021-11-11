@@ -3,7 +3,7 @@ import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/category_item.dart';
 
 class CategoryItemCardWidget extends StatelessWidget {
-  CategoryItemCardWidget({Key key, this.item, this.color = Colors.blue})
+  CategoryItemCardWidget({Key key, this.item, this.color = Colors.white})
       : super(key: key);
   final CategoryItem item;
 
@@ -20,10 +20,10 @@ class CategoryItemCardWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        //color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: color.withOpacity(0.7),
+          color: borderColor,
           width: 2,
         ),
       ),
@@ -31,6 +31,7 @@ class CategoryItemCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            color: Colors.transparent,
             height: 120,
             width: 120,
             child: imageWidget(),

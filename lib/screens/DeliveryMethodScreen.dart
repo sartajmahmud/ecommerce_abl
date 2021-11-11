@@ -12,9 +12,43 @@ class DeliveryMethodScreen extends StatefulWidget {
 }
 
 class _DeliveryMethodScreenState extends State<DeliveryMethodScreen> {
+  int selectedIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: padded(BottomAppBar(
+        shape: AutomaticNotchedShape(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(25),
+            ),
+          ),
+        ),
+        child: InkWell(
+          onTap: (){
+            switch(selectedIndex){
+              case 0:
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
+                break;
+              case 1:
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+                break;
+            }
+          },
+          child: Container(
+            height: 75,
+            decoration: BoxDecoration(
+                color: Color(0xff53B175),
+                borderRadius: BorderRadius.circular(18)),
+            child: Center(
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                )),
+          ),
+        ),
+      )),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -47,13 +81,18 @@ class _DeliveryMethodScreenState extends State<DeliveryMethodScreen> {
         children: [
           padded( InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
+              selectedIndex = 0;
+              setState(() {
+
+              });
+              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
             },
             child: Container(
                 height: 100,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color(0xffE2E2E2),
+                    width: 5,
+                    color: selectedIndex==0 ? Colors.green : Color(0xffE2E2E2),
                   ),
                   borderRadius: BorderRadius.circular(
                     18,
@@ -81,13 +120,18 @@ class _DeliveryMethodScreenState extends State<DeliveryMethodScreen> {
           ),),
           padded( InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+              selectedIndex = 1;
+              setState(() {
+
+              });
+              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
             },
             child: Container(
               height: 100,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffE2E2E2),
+                  width: 5,
+                  color: selectedIndex==1 ? Colors.green : Color(0xffE2E2E2),
                 ),
                 borderRadius: BorderRadius.circular(
                   18,

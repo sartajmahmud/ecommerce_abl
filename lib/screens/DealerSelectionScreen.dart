@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/widgets/DealerCardWidget.dart';
 
 class DealerSelectionScreen extends StatefulWidget {
   const DealerSelectionScreen();
@@ -42,8 +43,21 @@ class _DealerSelectionScreenState extends State<DealerSelectionScreen> {
         ),
       ),
       body: Container(
-        child: Text("Show Nearly Dealers"),
+        child: Column(
+          children: [
+            padded(DealerCardWidget('ABC Company','assets/images/Banner_mobil.jpg','Uttara, Dhaka')),
+            padded(DealerCardWidget('XYZ Corp.','assets/images/Banner_mobil.jpg','Dhanmondi, Dhaka')),
+
+          ],
+        ),
       ),
     );
   }
+  Widget padded(Widget widget) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      child: widget,
+    );
+  }
+
 }
