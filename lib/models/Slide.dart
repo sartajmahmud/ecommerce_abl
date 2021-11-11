@@ -2,7 +2,8 @@ import 'package:grocery_app/models/Product.dart';
 
 import '../helpers/custom_trace.dart';
 import '../models/media.dart';
-import 'Dealer.dart';
+import 'Seller.dart';
+import 'Seller.dart';
 
 class Slide {
   String id;
@@ -17,7 +18,7 @@ class Slide {
   Media image;
   String imageFit;
   Product product;
-  Dealer dealer;
+  Seller seller;
   bool enabled;
 
   Slide();
@@ -35,7 +36,7 @@ class Slide {
       indicatorColor = jsonMap['indicator_color'] != null ? jsonMap['indicator_color'].toString() : '';
       imageFit = jsonMap['image_fit'] != null ? jsonMap['image_fit'].toString() : 'cover';
       enabled = jsonMap['enabled'] ?? false;
-      dealer = jsonMap['dealer'] != null ? Dealer.fromJSON(jsonMap['dealer']) : Dealer.fromJSON({});
+      seller = jsonMap['seller'] != null ? Seller.fromJSON(jsonMap['seller']) : Seller.fromJSON({});
       product = jsonMap['product'] != null ? Product.fromJSON(jsonMap['product']) : Product.fromJSON({});
       image = jsonMap['media'] != null && (jsonMap['media'] as List).length > 0 ? Media.fromJSON(jsonMap['media'][0]) : new Media();
     } catch (e) {
@@ -50,7 +51,7 @@ class Slide {
       indicatorColor = '';
       imageFit = '';
       enabled = false;
-      dealer = Dealer.fromJSON({});
+      seller = Seller.fromJSON({});
       product = Product.fromJSON({});
       image = Media();
       print(CustomTrace(StackTrace.current, message: e));

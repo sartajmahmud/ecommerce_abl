@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/Media.dart';
 
-class DealerScreen extends StatefulWidget {
+class SellerScreen extends StatefulWidget {
   String title , imagepath, address;
-  DealerScreen(this.title, this.imagepath, this.address);
+  SellerScreen(this.title, this.imagepath, this.address);
 
   @override
-  _DealerScreenState createState() => _DealerScreenState();
+  _SellerScreenState createState() => _SellerScreenState();
 }
 
-class _DealerScreenState extends State<DealerScreen> {
+class _SellerScreenState extends State<SellerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -6,7 +6,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 
 class HomeScreenController extends ControllerMVC{
 
-  /// listen for home screen products, dealers, refresh , banners, top categories, categories
+  /// listen for home screen products, Sellers, refresh , banners, top categories, categories
   //FirebaseMessaging _firebaseMessaging;
   List<Slide> slides = <Slide>[];
   GlobalKey<ScaffoldState> scaffoldKey;

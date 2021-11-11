@@ -46,7 +46,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 break;
               case 1:
                 //redirect to ssl commerce
-               // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+               // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
                 break;
             }
           },
@@ -145,7 +145,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 setState(() {
 
                 });
-                //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+                //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
               },
               child: Container(
                 height: 100,

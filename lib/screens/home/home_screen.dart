@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/controllers/HomeScreenController.dart';
-import 'package:grocery_app/widgets/DealerCardWidget.dart';
+import 'package:grocery_app/widgets/SellerCardWidget.dart';
 import 'package:grocery_app/widgets/HomeSliderWidget.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
@@ -60,8 +60,8 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                     SizedBox(
                       height: 25,
                     ),
-                    HomeSliderWidget(),
-                    //padded(HomeBanner()),
+                    //HomeSliderWidget(),
+                    padded(HomeBanner()),
                     SizedBox(
                       height: 25,
                     ),
@@ -117,11 +117,11 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                     SizedBox(
                       height: 15,
                     ),
-                    padded(subTitle("Our Dealers")),
+                    padded(subTitle("Our Sellers")),
                     SizedBox(
                       height: 15,
                     ),
-                    padded(DealerCardWidget("AXYZ imports", "assets/images/Banner_mobil.jpg", 'Dhanmondi, Dhaka')),
+                    padded(SellerCardWidget("AXYZ imports", "assets/images/Banner_mobil.jpg", 'Dhanmondi, Dhaka')),
                     SizedBox(
                       height: 15,
                     ),

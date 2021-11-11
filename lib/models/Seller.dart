@@ -1,6 +1,6 @@
 import 'package:grocery_app/models/Media.dart';
 
-class Dealer {
+class Seller {
   String id;
   String name;
   Media image;
@@ -23,9 +23,9 @@ class Dealer {
   //Discount discount;
   Media logo;
 
-  Dealer();
+  Seller();
 
-  Dealer.fromJSON(Map<String, dynamic> jsonMap) {
+  Seller.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       id = jsonMap['id'].toString();
       name = jsonMap['name'];

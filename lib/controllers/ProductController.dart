@@ -16,9 +16,9 @@ class ProductController extends ControllerMVC {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
   }
 
-  bool isSameDealer(Product product) {
+  bool isSameSeller(Product product) {
     if (carts.isNotEmpty) {
-      return carts[0].product?.dealer?.id == product.dealer?.id;
+      return carts[0].product?.seller?.id == product.seller?.id;
     }
     return true;
   }

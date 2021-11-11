@@ -1,5 +1,5 @@
 import 'package:grocery_app/models/Category.dart';
-import 'package:grocery_app/models/Dealer.dart';
+import 'package:grocery_app/models/Seller.dart';
 import 'package:grocery_app/models/Extra.dart';
 import 'package:grocery_app/models/ExtraGroup.dart';
 import 'package:grocery_app/models/Media.dart';
@@ -19,7 +19,7 @@ class Product {
 //  String packageItemsCount;
   // bool featured;
   bool deliverable;
-  Dealer dealer;
+  Seller seller;
   Category category;
   List<Extra> extras;
   List<ExtraGroup> extraGroups;
@@ -53,9 +53,9 @@ class Product {
       // packageItemsCount = jsonMap['package_items_count'].toString();
       // featured = jsonMap['featured'] ?? false;
       deliverable = jsonMap['deliverable'] ?? false;
-      dealer = jsonMap['restaurant'] != null
-          ? Dealer.fromJSON(jsonMap['restaurant'])
-          : Dealer.fromJSON({});
+      seller = jsonMap['restaurant'] != null
+          ? Seller.fromJSON(jsonMap['restaurant'])
+          : Seller.fromJSON({});
       // if (jsonMap['offer'] != null) {
       //   offerDetails = offer.fromJSON(jsonMap['offer']);
       //   print("this is max ${offerDetails.MaxQuantity}");
@@ -99,7 +99,7 @@ class Product {
       // packageItemsCount = '';
       // featured = false;
       deliverable = false;
-      dealer = Dealer.fromJSON({});
+      seller = Seller.fromJSON({});
       category = Category.fromJSON({});
       //offerDetails = offer.fromJSON({});
       image = new Media();

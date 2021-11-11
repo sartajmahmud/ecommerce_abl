@@ -103,7 +103,7 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
                                 if (slide.button != null && slide.button != '')
                                   FlatButton(
                                     onPressed: () {
-                                      if (slide.dealer != null) {
+                                      if (slide.seller != null) {
                                         //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuWidget(routeArgument: RouteArgument(param: slide.restaurant))));
                                         //Navigator.of(context).pushNamed('/Details', arguments: RouteArgument(id: '0', param: slide.restaurant.id, heroTag: 'home_slide'));
                                       } else if (slide.product != null) {

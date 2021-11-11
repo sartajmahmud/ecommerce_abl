@@ -155,9 +155,9 @@ class CartController extends ControllerMVC {
         ),
       ));
     } else {
-      if (carts[0].product.dealer.closed) {
+      if (carts[0].product.seller.closed) {
         scaffoldKey?.currentState?.showSnackBar(SnackBar(
-          content: Text("Dealership is closed"),
+          content: Text("Sellership is closed"),
         ));
       }
       else if(carts[0].product.deliverable==false){

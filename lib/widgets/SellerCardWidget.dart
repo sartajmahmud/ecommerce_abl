@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/screens/DealerScreen.dart';
+import 'package:grocery_app/screens/SellerScreen.dart';
 
-class DealerCardWidget extends StatefulWidget {
+class SellerCardWidget extends StatefulWidget {
   String imagepath, name, location;
 
-  DealerCardWidget(this.name, this.imagepath, this.location);
+  SellerCardWidget(this.name, this.imagepath, this.location);
 
   @override
-  _DealerCardWidgetState createState() => _DealerCardWidgetState();
+  _SellerCardWidgetState createState() => _SellerCardWidgetState();
 }
 
-class _DealerCardWidgetState extends State<DealerCardWidget> {
+class _SellerCardWidgetState extends State<SellerCardWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerScreen(widget.name, widget.imagepath, widget.location)));
+        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerScreen(widget.name, widget.imagepath, widget.location)));
       },
       child: Container(
         height: 220,

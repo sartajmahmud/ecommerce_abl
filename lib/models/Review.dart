@@ -1,4 +1,4 @@
-import 'package:grocery_app/models/Dealer.dart';
+import 'package:grocery_app/models/Seller.dart';
 import 'package:grocery_app/models/User.dart';
 
 import 'Product.dart';
@@ -44,9 +44,9 @@ class Review {
     return this.toMap().toString();
   }
 
-  Map ofDealerToMap(Dealer dealer) {
+  Map ofSellerToMap(Seller Seller) {
     var map = this.toMap();
-    map["dealer_id"] = dealer.id;
+    map["Seller_id"] = Seller.id;
     return map;
   }
 

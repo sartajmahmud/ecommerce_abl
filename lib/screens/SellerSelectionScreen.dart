@@ -1,16 +1,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/widgets/DealerCardWidget.dart';
+import 'package:grocery_app/widgets/SellerCardWidget.dart';
 
-class DealerSelectionScreen extends StatefulWidget {
-  const DealerSelectionScreen();
+class SellerSelectionScreen extends StatefulWidget {
+  const SellerSelectionScreen();
 
   @override
-  _DealerSelectionScreenState createState() => _DealerSelectionScreenState();
+  _SellerSelectionScreenState createState() => _SellerSelectionScreenState();
 }
 
-class _DealerSelectionScreenState extends State<DealerSelectionScreen> {
+class _SellerSelectionScreenState extends State<SellerSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _DealerSelectionScreenState extends State<DealerSelectionScreen> {
             horizontal: 25,
           ),
           child: AppText(
-            text: "Select Nearby Dealer",
+            text: "Select Nearby Seller",
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -45,8 +45,8 @@ class _DealerSelectionScreenState extends State<DealerSelectionScreen> {
       body: Container(
         child: Column(
           children: [
-            padded(DealerCardWidget('ABC Company','assets/images/Banner_mobil.jpg','Uttara, Dhaka')),
-            padded(DealerCardWidget('XYZ Corp.','assets/images/Banner_mobil.jpg','Dhanmondi, Dhaka')),
+            padded(SellerCardWidget('ABC Company','assets/images/Banner_mobil.jpg','Uttara, Dhaka')),
+            padded(SellerCardWidget('XYZ Corp.','assets/images/Banner_mobil.jpg','Dhanmondi, Dhaka')),
 
           ],
         ),

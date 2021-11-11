@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
@@ -22,6 +22,11 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int amount = 1;
+  final List imgList = [
+    'assets/images/grocery_images/Bizol_G+.jpg',
+    'assets/images/grocery_images/Bizol_Moto.jpg',
+    'assets/images/grocery_images/Bizol_All_Rounder.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +62,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height+342,
+            height: MediaQuery.of(context).size.height+365,
             child: Column(
               children: [
-                getImageHeaderWidget(),
+                GalleryImageWidget(),
+                //getImageHeaderWidget(),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -102,6 +108,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ],
                         ),
                         Spacer(),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                          alignment: Alignment.centerLeft,
+                            child: AppText(text:'98 Remaining')),
                         Divider(thickness: 1),
                         getProductDataRowWidget("Product Details"),
                         Divider(thickness: 1),
@@ -129,6 +139,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget GalleryImageWidget(){
+    return Container(
+      height: 200,
+      child: Swiper(
+        itemBuilder:
+            (BuildContext context, int index) {
+          return new Image.asset(
+            imgList[index],
+            fit: BoxFit.fill,
+          );
+        },
+        itemCount: 3,
+        viewportFraction: 0.7,
+        scale: 0.8,
       ),
     );
   }

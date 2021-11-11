@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/screens/DealerSelectionScreen.dart';
+import 'package:grocery_app/screens/SellerSelectionScreen.dart';
 import 'package:grocery_app/screens/PaymentMethodScreen.dart';
 
 class DeliveryMethodScreen extends StatefulWidget {
@@ -31,7 +31,7 @@ class _DeliveryMethodScreenState extends State<DeliveryMethodScreen> {
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
                 break;
               case 1:
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
                 break;
             }
           },
@@ -79,52 +79,52 @@ class _DeliveryMethodScreenState extends State<DeliveryMethodScreen> {
       ),
       body: Column(
         children: [
-          padded( InkWell(
-            onTap: (){
-              selectedIndex = 0;
-              setState(() {
-
-              });
-              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
-            },
-            child: Container(
-                height: 100,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 5,
-                    color: selectedIndex==0 ? Colors.green : Color(0xffE2E2E2),
-                  ),
-                  borderRadius: BorderRadius.circular(
-                    18,
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                          flex: 3,
-                          child: Center(child: AppText(text: 'Home Delivery',fontWeight: FontWeight.w600,))
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Image.network('https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png'),
-
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-          ),),
+          // padded( InkWell(
+          //   onTap: (){
+          //     selectedIndex = 0;
+          //     setState(() {
+          //
+          //     });
+          //     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
+          //   },
+          //   child: Container(
+          //       height: 100,
+          //       decoration: BoxDecoration(
+          //         border: Border.all(
+          //           width: 5,
+          //           color: selectedIndex==0 ? Colors.green : Color(0xffE2E2E2),
+          //         ),
+          //         borderRadius: BorderRadius.circular(
+          //           18,
+          //         ),
+          //       ),
+          //       child: Padding(
+          //         padding: EdgeInsets.all(15),
+          //         child: Row(
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: [
+          //             Expanded(
+          //                 flex: 3,
+          //                 child: Center(child: AppText(text: 'Home Delivery',fontWeight: FontWeight.w600,))
+          //             ),
+          //             Expanded(
+          //                 flex: 1,
+          //                 child: Container(
+          //                   child: Image.network('https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png'),
+          //
+          //                 ))
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          // ),),
           padded( InkWell(
             onTap: (){
               selectedIndex = 1;
               setState(() {
 
               });
-              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DealerSelectionScreen()));
+              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
             },
             child: Container(
               height: 100,

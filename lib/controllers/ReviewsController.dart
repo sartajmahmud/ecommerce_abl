@@ -5,7 +5,7 @@ import 'package:grocery_app/models/Product.dart';
 import 'package:grocery_app/repositories/OrderRepository.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import '../models/Review.dart';
-import 'package:grocery_app/repositories/DealerRepository.dart' as dealerRepo;
+import 'package:grocery_app/repositories/SellerRepository.dart' as SellerRepo;
 import 'package:grocery_app/repositories/ProductRepository.dart' as productRepo;
 class ReviewsController extends ControllerMVC {
   Review restaurantReview;
@@ -50,11 +50,11 @@ class ReviewsController extends ControllerMVC {
     });
   }
 
-  void addDealerReview(Review _review) async {
-    dealerRepo.addDealerReview(_review, this.order.productOrders[0].product.dealer).then((value) {
+  void addSellerReview(Review _review) async {
+    SellerRepo.addSellerReview(_review, this.order.productOrders[0].product.seller).then((value) {
       refreshOrder();
       scaffoldKey?.currentState?.showSnackBar(SnackBar(
-        content: Text("Dealer has been successfully rated"),
+        content: Text("Seller has been successfully rated"),
       ));
     });
   }
