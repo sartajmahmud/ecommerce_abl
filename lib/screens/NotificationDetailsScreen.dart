@@ -1,16 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/widgets/NotificationCardWidget.dart';
 
-class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen();
+class NotificationDetailsScreen extends StatefulWidget {
+   NotificationDetailsScreen();
 
   @override
-  _NotificationsScreenState createState() => _NotificationsScreenState();
+  _NotificationDetailsScreenState createState() => _NotificationDetailsScreenState();
 }
 
-class _NotificationsScreenState extends State<NotificationsScreen> {
+class _NotificationDetailsScreenState extends State<NotificationDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +35,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             horizontal: 25,
           ),
           child: AppText(
-            text: "Notifications",
+            text: "",
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -44,8 +43,17 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       ),
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            NotificationCardWidget(),
+            Container(
+              padding: EdgeInsets.all(30),
+              child: Text('Bkash use kore ekhoni niye felun 50% discount',
+              textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23
+                ),
+              ),
+            )
           ],
         ),
       ),

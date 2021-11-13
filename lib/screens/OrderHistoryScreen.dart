@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/widgets/OrderHistoryCardWidget.dart';
 
 class OrderHistoryScreen extends StatefulWidget {
   OrderHistoryScreen();
@@ -41,9 +42,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
           ),
         ),
       ),
-      body: Container(
-        child: Text("Order History"),
-      ),
+      ///gonna be the list of order history
+      body: Column(
+        children: [
+          OrderHistoryCardWidget()
+        ],
+      )
     );
   }
 }
