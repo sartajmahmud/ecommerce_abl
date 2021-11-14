@@ -16,7 +16,8 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
     return Center(
       child: InkWell(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => NotificationDetailsScreen()));
+          //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => NotificationDetailsScreen()));
+          Navigator.pushNamed(context, '/notificationDetailsScreen');
         },
         child: Container(
           height: 120,

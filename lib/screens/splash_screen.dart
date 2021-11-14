@@ -32,11 +32,12 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
     WidgetsFlutterBinding.ensureInitialized();
     await GlobalConfiguration().loadFromAsset("configurations");
     await Firebase.initializeApp().then((value) async {
-      Navigator.of(context).pushReplacement(new MaterialPageRoute(
-        builder: (BuildContext context) {
-          return WelcomeScreen();
-        },
-      ));
+      // Navigator.of(context).pushReplacement(new MaterialPageRoute(
+      //   builder: (BuildContext context) {
+      //     return WelcomeScreen();
+      //   },
+      // ));
+      Navigator.pushNamed(context, '/welcome');
     });
 
     print(CustomTrace(StackTrace.current, message: "base_url: ${GlobalConfiguration().getValue('base_url')}"));

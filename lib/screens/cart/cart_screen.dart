@@ -3,6 +3,7 @@ import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/DeliveryMethodScreen.dart';
+import 'package:grocery_app/screens/SellerSelectionScreen.dart';
 import 'package:grocery_app/widgets/chart_item_widget.dart';
 
 import 'checkout_bottom_sheet.dart';
@@ -70,7 +71,8 @@ class CartScreen extends StatelessWidget {
         trailingWidget: getButtonPriceWidget(),
         onPressed: () {
           //showBottomSheet(context);
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DeliveryMethodScreen()));
+          Navigator.pushNamed(context, '/sellerSelectionScreen');
+          //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
           //navigate to checkoutScreen
         },
       ),

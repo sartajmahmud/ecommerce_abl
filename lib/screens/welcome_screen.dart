@@ -97,10 +97,11 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   void onGetStartedClicked(BuildContext context) {
-    Navigator.of(context).pushReplacement(new MaterialPageRoute(
-      builder: (BuildContext context) {
-        return DashboardScreen();
-      },
-    ));
+    // Navigator.of(context).pushReplacement(new MaterialPageRoute(
+    //   builder: (BuildContext context) {
+    //     return DashboardScreen();
+    //   },
+    // ));
+    Navigator.pushNamed(context, '/home');
   }
 }

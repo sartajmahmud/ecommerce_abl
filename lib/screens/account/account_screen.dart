@@ -119,16 +119,19 @@ class AccountScreen extends StatelessWidget {
       onTap: (){
         switch(accountItem.label){
           case 'Orders':
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => OrderHistoryScreen()));
+            //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => OrderHistoryScreen()));
+          Navigator.pushNamed(context, '/orderHistoryScreen');
             break;
           case 'My Details':
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => UserDetailsScreen()));
+            Navigator.pushNamed(context, '/userDetailsScreen');
+            //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => UserDetailsScreen()));
             break;
           case 'My Wishlist':
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WishlistScreen()));
+            //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WishlistScreen()));
             break;
           case 'Notifications':
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => NotificationsScreen()));
+            Navigator.pushNamed(context, '/notificationsScreen');
+            //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => NotificationsScreen()));
             break;
         }
       },

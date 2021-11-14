@@ -3,6 +3,8 @@ import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 
+import 'order_accepted_screen.dart';
+
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen();
 
@@ -45,6 +47,12 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
                 break;
               case 1:
+                // Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                //   builder: (BuildContext context) {
+                //     return OrderAcceptedScreen();
+                //   },
+                // ));
+              Navigator.pushNamed(context, '/orderConfirmScreen');
                 //redirect to ssl commerce
                // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
                 break;

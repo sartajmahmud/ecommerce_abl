@@ -22,7 +22,7 @@ class OrderAcceptedScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
-                "You Order Has Been Accepted",
+                "You Order Has Been Confirmed",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
@@ -46,6 +46,7 @@ class OrderAcceptedScreen extends StatelessWidget {
               label: "Track Order",
               onPressed: () {
                 Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(context,'/orderDetailsScreen', ModalRoute.withName('/home'));
               },
             ),
             Spacer(
@@ -53,7 +54,8 @@ class OrderAcceptedScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pop(context);
+
+                Navigator.popUntil(context, ModalRoute.withName('/home'));
               },
               child: Text(
                 "Back To Home",
