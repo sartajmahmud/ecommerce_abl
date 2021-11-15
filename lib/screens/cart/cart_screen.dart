@@ -71,7 +71,7 @@ class CartScreen extends StatelessWidget {
         trailingWidget: getButtonPriceWidget(),
         onPressed: () {
           //showBottomSheet(context);
-          Navigator.pushNamed(context, '/sellerSelectionScreen');
+          Navigator.pushNamed(context, '/deliveryMethodScreen');
           //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SellerSelectionScreen()));
           //navigate to checkoutScreen
         },

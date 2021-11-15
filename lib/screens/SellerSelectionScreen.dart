@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/widgets/SellerCardWidget.dart';
@@ -13,6 +12,8 @@ class SellerSelectionScreen extends StatefulWidget {
 }
 
 class _SellerSelectionScreenState extends State<SellerSelectionScreen> {
+  int selectedIndex;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class _SellerSelectionScreenState extends State<SellerSelectionScreen> {
           ),
         ),
         child: InkWell(
-          onTap: (){
+          onTap: () {
             // switch(selectedIndex){
             //   case 0:
             //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PaymentMethodScreen()));
@@ -44,10 +45,12 @@ class _SellerSelectionScreenState extends State<SellerSelectionScreen> {
                 borderRadius: BorderRadius.circular(18)),
             child: Center(
                 child: Text(
-                  'Confirm',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-                )),
+              'Confirm',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
+            )),
           ),
         ),
       )),
@@ -82,19 +85,32 @@ class _SellerSelectionScreenState extends State<SellerSelectionScreen> {
       body: Container(
         child: Column(
           children: [
-            padded(SellerCardWidget('ABC Company','assets/images/Banner_mobil.jpg','Uttara, Dhaka')),
-            padded(SellerCardWidget('XYZ Corp.','assets/images/Banner_mobil.jpg','Dhanmondi, Dhaka')),
-
+            padded(InkWell(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 0;
+                  });
+                },
+                child: SellerCardWidget('ABC Company',
+                    'assets/images/Banner_mobil.jpg', 'Uttara, Dhaka', selectedIndex==0?true:false))),
+            padded(InkWell(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 1;
+                  });
+                },
+                child: SellerCardWidget('XYZ Corp.',
+                    'assets/images/Banner_mobil.jpg', 'Dhanmondi, Dhaka',selectedIndex==1?true:false))),
           ],
         ),
       ),
     );
   }
+
   Widget padded(Widget widget) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: widget,
     );
   }
-
 }

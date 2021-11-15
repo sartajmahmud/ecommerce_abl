@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/screens/DeliveryMethodScreen.dart';
 import 'package:grocery_app/screens/ForgetPasswordScreen.dart';
 import 'package:grocery_app/screens/LoginScreen.dart';
 import 'package:grocery_app/screens/NoInternetScreen.dart';
@@ -41,6 +42,8 @@ class MyApp extends StatelessWidget {
         '/notificationDetailsScreen': (context) => NotificationDetailsScreen(),
         '/orderHistoryScreen': (context) => OrderHistoryScreen(),
         '/userDetailsScreen': (context) => UserDetailsScreen(),
+        '/deliveryMethodScreen': (context) => DeliveryMethodScreen(),
+
 
       },
     );

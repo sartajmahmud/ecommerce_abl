@@ -69,36 +69,77 @@ class _SellerScreenState extends State<SellerScreen> {
                   )
                 ],
               )),
-              Text(
-                  'Categories'
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
+              // Text(
+              //     'Categories'
+              // ),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal,
+              //   child: Container(
+              //     height: 80,
+              //     child: Row(
+              //       children: [
+              //         categoryWidget("testCat1"),
+              //         categoryWidget("testCat2"),
+              //         categoryWidget("testCat3"),
+              //         categoryWidget("testCat4"),
+              //         categoryWidget("testCat5"),
+              //         categoryWidget("testCat6"),
+              //         categoryWidget("testCat7"),
+              //         categoryWidget("testCat8"),
+              //         categoryWidget("testCat9"),
+              //         categoryWidget("testCat10"),
+              //         categoryWidget("testCat11"),
+              //         categoryWidget("testCat12"),
+              //         categoryWidget("testCat13"),
+              //
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // Text(
+              //   'Products'
+              // )
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 80,
-                  child: Row(
+                  child: Column(
                     children: [
-                      categoryWidget("testCat1"),
-                      categoryWidget("testCat2"),
-                      categoryWidget("testCat3"),
-                      categoryWidget("testCat4"),
-                      categoryWidget("testCat5"),
-                      categoryWidget("testCat6"),
-                      categoryWidget("testCat7"),
-                      categoryWidget("testCat8"),
-                      categoryWidget("testCat9"),
-                      categoryWidget("testCat10"),
-                      categoryWidget("testCat11"),
-                      categoryWidget("testCat12"),
-                      categoryWidget("testCat13"),
-
+                      Row(
+                        children: [
+                          Expanded(
+                            flex:1,
+                              child: Icon(Icons.location_on)),
+                          Expanded(
+                            flex: 6,
+                            child: Text('Green City Square A-1313th Floor 750 Satmasjid RoadDhanmondi C/A, Dhaka – 1209',
+                            overflow: TextOverflow.ellipsis,),
+                          ),
+                          Expanded(
+                            flex: 1,
+                              child: Icon(Icons.navigation)),
+                        ],
+                      ),
+                      Divider(),
+                      Row(
+                        children: [
+                          Expanded(
+                              flex:1,
+                              child: Icon(Icons.phone_android)),
+                          Expanded(
+                            flex: 6,
+                            child: Text('12345678910',
+                              overflow: TextOverflow.ellipsis,),
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Icon(Icons.phone)),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
-              Text(
-                'Products'
-              )
             ],
 
           ),

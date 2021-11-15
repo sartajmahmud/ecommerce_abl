@@ -5,11 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
 import 'package:grocery_app/screens/LoginScreen.dart';
-import 'package:grocery_app/screens/OrderHistoryScreen.dart';
-import 'package:grocery_app/screens/UserDetailsScreen.dart';
-import 'package:grocery_app/screens/WishlistScreen.dart';
 import 'package:grocery_app/styles/colors.dart';
-import '../NotificationsScreen.dart';
 import 'account_item.dart';
 
 class AccountScreen extends StatelessWidget {

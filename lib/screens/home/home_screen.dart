@@ -114,14 +114,14 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                     ),
                     padded(subTitle("Featured Products")),
                     getHorizontalItemSlider(bestSelling),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    padded(subTitle("Our Sellers")),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    padded(SellerCardWidget("AXYZ imports", "assets/images/Banner_mobil.jpg", 'Dhanmondi, Dhaka')),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // padded(subTitle("Our Sellers")),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // padded(SellerCardWidget("AXYZ imports", "assets/images/Banner_mobil.jpg", 'Dhanmondi, Dhaka')),
                     SizedBox(
                       height: 15,
                     ),
