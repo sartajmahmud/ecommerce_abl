@@ -1,11 +1,9 @@
-import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:grocery_app/controllers/SplashScreenController.dart';
 import 'package:grocery_app/helpers/custom_trace.dart';
 import 'package:grocery_app/repositories/UserRepository.dart';
-import 'package:grocery_app/screens/welcome_screen.dart';
 import 'package:grocery_app/styles/colors.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
