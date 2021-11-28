@@ -4,7 +4,6 @@ import 'package:grocery_app/repositories/CartRepository.dart';
 import 'package:grocery_app/repositories/UserRepository.dart';
 import '../models/User.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import '../helpers/helper.dart';
 import '../models/Cart.dart';
 
 
@@ -21,8 +20,8 @@ class CartController extends ControllerMVC {
   double distance = 0;
   GlobalKey<ScaffoldState> scaffoldKey;
   double base=0;
-  double increament=0;
-  String FeeStatus;
+  double increment=0;
+  String feeStatus;
   double discount=0;
   int couponValidate=2;
   bool distanceValidity=true;

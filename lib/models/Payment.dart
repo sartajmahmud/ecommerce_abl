@@ -1,4 +1,3 @@
-import '../helpers/custom_trace.dart';
 
 class Payment {
   String id;

@@ -8,7 +8,6 @@ import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/styles/colors.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
 import 'package:grocery_app/widgets/item_counter_widget.dart';
-
 import 'favourite_toggle_icon_widget.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -65,7 +64,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             height: MediaQuery.of(context).size.height+365,
             child: Column(
               children: [
-                GalleryImageWidget(),
+                galleryImageWidget(),
                 //getImageHeaderWidget(),
                 Expanded(
                   child: Padding(
@@ -143,7 +142,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  Widget GalleryImageWidget(){
+  Widget galleryImageWidget(){
     return Container(
       height: 200,
       child: Swiper(
@@ -247,7 +246,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
   Widget getProductDataRowWidget(String label, {Widget customWidget}) {
-    bool expanded = false;
     return Container(
       margin: EdgeInsets.only(
         top: 20,

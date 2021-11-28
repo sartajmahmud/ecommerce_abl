@@ -5,7 +5,7 @@ class Media {
   String thumb;
   String icon;
   String size;
-  String collection_name;
+  String collectionName;
 
   Media() {
     //  url = "${GlobalConfiguration().getValue('base_url')}images/image_default.png";
@@ -21,7 +21,7 @@ class Media {
       thumb = jsonMap['thumb'];
       icon = jsonMap['icon'];
       size = jsonMap['formated_size'];
-      collection_name=jsonMap['collection_name'];
+      collectionName=jsonMap['collection_name'];
     } catch (e) {
       //  url = "${GlobalConfiguration().getValue('base_url')}images/image_default.png";
       // thumb = "${GlobalConfiguration().getValue('base_url')}images/image_default.png";

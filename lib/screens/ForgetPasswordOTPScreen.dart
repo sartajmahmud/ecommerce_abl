@@ -6,8 +6,8 @@ import 'dart:convert';
 import '../controllers/UserController.dart';
 
 class ForgetPasswordOTPScreen extends StatefulWidget {
-  String number;
-  UserController user;
+  final String number;
+  final UserController user;
 
   ForgetPasswordOTPScreen(this.number,this.user);
 
@@ -16,17 +16,17 @@ class ForgetPasswordOTPScreen extends StatefulWidget {
 }
 
 class _ForgetPasswordOTPScreenState extends State<ForgetPasswordOTPScreen> {
-  Future<String> OTPcode;
+  Future<String> oneTimePassword;
   String number;
   Future<String> validateOtp(String otp) async {
     String status;
-    http.Response responseback=await http.post("http://test-ecom.com/api.php?apicall=register",
+    http.Response responses=await http.post("http://test-ecom.com/api.php?apicall=register",
         body: {'otp':'$otp'}
     );
-    if(responseback.statusCode==200)
+    if(responses.statusCode==200)
     {
-      status=json.decode(responseback.body)["message"].toString();
-      print(responseback.body);
+      status=json.decode(responses.body)["message"].toString();
+      print(responses.body);
     }
     await Future.delayed(Duration(milliseconds: 4000));
     print("the otp is $status");
@@ -38,19 +38,19 @@ class _ForgetPasswordOTPScreenState extends State<ForgetPasswordOTPScreen> {
     }
   }
 
-  Future<String> Getotp(String number) async {
-    String OTPCode;
+  Future<String> getOTP(String number) async {
+    String oneTimePassword;
     http.Response response=await http.post("http://test-ecom.com/api.php?apicall=otp",
         body: {'access':'123456','number':'$number'}
     );
 
     if(response.statusCode==200)
     {
-      OTPCode=json.decode(response.body)["message"].toString();
+      oneTimePassword=json.decode(response.body)["message"].toString();
       print(response.body);
-      print(OTPCode);
+      print(oneTimePassword);
     }
-    return OTPCode;
+    return oneTimePassword;
   }
 
 

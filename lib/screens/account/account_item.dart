@@ -6,8 +6,9 @@ class AccountItem {
 }
 
 List<AccountItem> accountItems = [
-  AccountItem("Orders", "assets/icons/account_icons/orders_icon.svg"),
   AccountItem("My Details", "assets/icons/account_icons/details_icon.svg"),
+  AccountItem("Orders", "assets/icons/account_icons/orders_icon.svg"),
+
   //AccountItem("My Wishlist", "assets/icons/account_icons/wishlist.svg"),
  // AccountItem("Delivery Access", "assets/icons/account_icons/delivery_icon.svg"),
   //AccountItem("Payment Methods", "assets/icons/account_icons/payment_icon.svg"),

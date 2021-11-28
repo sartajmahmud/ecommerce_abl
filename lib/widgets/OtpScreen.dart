@@ -74,11 +74,11 @@ class _OtpScreenState extends State<OtpScreen>
   @override
   void initState() {
     otpValues = List<int>.filled(widget.otpLength, null, growable: false);
-    OTPtimer();
+    oneTimePasswordTimer();
     super.initState();
   }
 
-  void OTPtimer(){
+  void oneTimePasswordTimer(){
     Timer.periodic(Duration(seconds: 1),(timer){
       if(countdown==0){
         timer.cancel();
@@ -92,16 +92,16 @@ class _OtpScreenState extends State<OtpScreen>
     });
   }
 
-  Future<void> Resendotp(String number) async {
-    String OTPCode;
+  Future<void> reSendOTP(String number) async {
+    String oneTimePassword;
     http.Response response=await http.post("http://api.food-aholic.com/api.php?apicall=otp",
         body: {'access':'123456','number':'$number'}
     );
     if(response.statusCode==200)
     {
-      OTPCode=json.decode(response.body)["message"].toString();
+      oneTimePassword=json.decode(response.body)["message"].toString();
       print(response.body);
-      print(OTPCode);
+      print(oneTimePassword);
     }
   }
 
@@ -288,9 +288,9 @@ class _OtpScreenState extends State<OtpScreen>
                     onTap: (){
                       if(countdown==0){
                         countdown=30;
-                        OTPtimer();
+                        oneTimePasswordTimer();
                         print(widget.mobile);
-                        Resendotp(widget.mobile);
+                        reSendOTP(widget.mobile);
                       }
                     },
                     borderRadius: new BorderRadius.circular(40.0),
@@ -301,7 +301,7 @@ class _OtpScreenState extends State<OtpScreen>
                         shape: BoxShape.circle,
                       ),
                       child: new Center(
-                        child: countdown>0 ? Text(countdown>9 ?'0:${countdown}' : '0:0${countdown}',style: TextStyle(color: widget.themeColor,fontSize: 20,fontWeight: FontWeight.w500),) : Text('Resend \n   OTP',style: TextStyle(color: widget.themeColor,fontSize: 15,fontWeight: FontWeight.w700),),
+                        child: countdown>0 ? Text(countdown>9 ?'0:$countdown' : '0:0$countdown',style: TextStyle(color: widget.themeColor,fontSize: 20,fontWeight: FontWeight.w500),) : Text('Resend \n   OTP',style: TextStyle(color: widget.themeColor,fontSize: 15,fontWeight: FontWeight.w700),),
                       ),
                     ),
                   ),
@@ -446,7 +446,7 @@ class _OtpScreenState extends State<OtpScreen>
 
   ///to show error  message
   showToast(BuildContext context, String msg) {
-    Widget toast = Padding(
+    Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50.0),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),

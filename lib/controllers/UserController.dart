@@ -97,14 +97,14 @@ class UserController extends ControllerMVC{
  }
 
  Future<String> duplicateAC() async{
-  final response=await repository.GetDuplicateAC(user);
+  final response=await repository.getDuplicateAC(user);
   print('duplicate result controller $response');
   String result=response.toString();
   return result;
  }
 
  Future<String> resetPass() async{
-  final response=await repository.GetResetPass(user);
+  final response=await repository.getResetPass(user);
   String result=response.toString();
   return result;
  }

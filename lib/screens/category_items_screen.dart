@@ -5,11 +5,10 @@ import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
-
 import 'filter_screen.dart';
 
 class CategoryItemsScreen extends StatefulWidget {
-  String title;
+  final String title;
   CategoryItemsScreen(this.title);
   @override
   _CategoryItemsScreenState createState() => _CategoryItemsScreenState();

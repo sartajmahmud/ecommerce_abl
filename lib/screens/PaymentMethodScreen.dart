@@ -3,8 +3,6 @@ import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 
-import 'order_accepted_screen.dart';
-
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen();
 
@@ -33,7 +31,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           onTap: () async {
             switch(selectedIndex){
               case 0 :
-                LocationResult result = await showLocationPicker(
+                //LocationResult result =
+                 await showLocationPicker(
                   context,
                   "AIzaSyD_iQ1GwgBkmiMxeUDiC7c3fQLmzdmddF0",
                   countries: ['bd'],

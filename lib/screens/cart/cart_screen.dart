@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
 import 'package:grocery_app/models/grocery_item.dart';
-import 'package:grocery_app/screens/DeliveryMethodScreen.dart';
-import 'package:grocery_app/screens/SellerSelectionScreen.dart';
 import 'package:grocery_app/widgets/chart_item_widget.dart';
-
 import 'checkout_bottom_sheet.dart';
 
 class CartScreen extends StatelessWidget {
@@ -27,7 +24,7 @@ class CartScreen extends StatelessWidget {
                 height: 20,
               ),
               Column(
-                children: getChildrenWithSeperator(
+                children: getChildrenWithSeparator(
                   addToLastChild: false,
                   widgets: demoItems.map((e) {
                     return Container(
@@ -40,7 +37,7 @@ class CartScreen extends StatelessWidget {
                       ),
                     );
                   }).toList(),
-                  seperator: Padding(
+                  separator: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 25,
                     ),

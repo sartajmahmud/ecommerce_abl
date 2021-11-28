@@ -4,8 +4,6 @@ import 'package:grocery_app/screens/LoginScreen.dart';
 import 'package:grocery_app/screens/SignUpOTPScreen.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
-import 'ForgetPasswordOTPScreen.dart';
-
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -26,13 +24,13 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-                // ignore: prefer_const_literals_to_create_immutables
-                stops: [0.0, 1],
-                colors: [Colors.grey.shade700, Colors.grey.shade100],
-              )),
-          height: MediaQuery.of(context).size.height,
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            // ignore: prefer_const_literals_to_create_immutables
+            stops: [0.0, 1],
+            colors: [Colors.grey.shade700, Colors.grey.shade100],
+          )),
+          height: MediaQuery.of(context).size.height * 1.2,
           width: MediaQuery.of(context).size.width,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,7 +99,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                                 contentPadding: EdgeInsets.only(top: 14.0),
                                 hintText: 'Email',
                                 prefixIcon:
-                                Icon(Icons.email, color: Color(0xFFbf1e2e)),
+                                    Icon(Icons.email, color: Color(0xFFbf1e2e)),
                                 border: InputBorder.none,
                               ),
                             ),
@@ -128,7 +126,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                                 contentPadding: EdgeInsets.only(top: 14.0),
                                 hintText: '01XXXXXXXXX',
                                 prefixIcon:
-                                Icon(Icons.phone, color: Color(0xFFbf1e2e)),
+                                    Icon(Icons.phone, color: Color(0xFFbf1e2e)),
                                 border: InputBorder.none,
                               ),
                             ),
@@ -163,6 +161,32 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                         ),
                         const SizedBox(height: 20),
                         Padding(
+                          padding: const EdgeInsets.only(left: 60, right: 60),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.white,
+                            ),
+                            alignment: Alignment.centerLeft,
+                            height: 60.0,
+                            child: TextFormField(
+                              style: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              keyboardType: TextInputType.text,
+                              onChanged: (input) => _con.user.name = input,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.only(top: 14.0),
+                                hintText: 'Referral Code',
+                                prefixIcon: Icon(Icons.people,
+                                    color: Color(0xFFbf1e2e)),
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Padding(
                           padding: const EdgeInsets.only(left: 100, right: 100),
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -178,8 +202,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                             SignUpOTPScreen(
-                                                myController.text
-                                                    .toString(),
+                                                myController.text.toString(),
                                                 _con)));
                                 //await _con.register();
                               },
@@ -228,7 +251,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     ),
                   ),
                 ),
-                Expanded(flex: 1, child: Container()),
+                Expanded(flex: 1, child: Container())
               ]),
         ),
       ),

@@ -103,16 +103,16 @@ Future<User> update(User user) async {
   return currentUser.value;
 }
 
-Future<String> GetResetPass(User user) async {
+Future<String> getResetPass(User user) async {
   final String url = '${GlobalConfiguration().getValue('api_base_url')}users/reset-password';
   final client = new http.Client();
   final response = await client.post(
     url,
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-    body: json.encode(user.ResetPasswordMap()),
+    body: json.encode(user.resetPasswordMap()),
   );
   print("This is reset $url");
-  print("This is reset body ${json.encode(user.ResetPasswordMap())}");
+  print("This is reset body ${json.encode(user.resetPasswordMap())}");
   print("this is reset response ${response.body}");
   print("this is reset response ${jsonDecode(response.body)['message']}");
   print("statuscode: ${response.statusCode}");
@@ -127,16 +127,16 @@ Future<String> GetResetPass(User user) async {
   // return currentUser.value;
 }
 
-Future<bool> GetDuplicateAC(User user) async {
+Future<bool> getDuplicateAC(User user) async {
   final String url = '${GlobalConfiguration().getValue('api_base_url')}users/duplicate-ac';
   final client = new http.Client();
   final response = await client.post(
     url,
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-    body: json.encode(user.DuplicateACMap()),
+    body: json.encode(user.duplicateACMap()),
   );
   print("This is duplicate $url");
-  print("This is duplicate body ${json.encode(user.DuplicateACMap())}");
+  print("This is duplicate body ${json.encode(user.duplicateACMap())}");
   print("this is duplicate response ${response.body}");
   print("this is duplicate response ${jsonDecode(response.body)['success']}");
   if (response.statusCode == 200 || response.statusCode==404) {

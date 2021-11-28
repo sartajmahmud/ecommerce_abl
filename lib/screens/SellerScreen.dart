@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/models/Media.dart';
 
 class SellerScreen extends StatefulWidget {
-  String title , imagepath, address;
+  final String title , imagepath, address;
   SellerScreen(this.title, this.imagepath, this.address);
 
   @override

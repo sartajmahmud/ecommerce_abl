@@ -10,9 +10,9 @@ class User{
   String bio;
   //Media image;
   String mobile = '';
-  String referralcode;
-  String ConfirmPassword ='';
-  String DateofBirth;
+  String referralCode;
+  String confirmPassword ='';
+  String dateOfBirth;
   //String zoneId;
 
   // used for indicate if client logged in or not
@@ -27,8 +27,8 @@ class User{
     mobile = jsonMap['mobile'] != null ? jsonMap['mobile'] : '';
     apiToken = jsonMap['api_token'];
     deviceToken = jsonMap['device_token'];
-    referralcode=jsonMap['referral_code'].toString();
-    DateofBirth=jsonMap['dob'].toString();
+    referralCode=jsonMap['referral_code'].toString();
+    dateOfBirth=jsonMap['dob'].toString();
     phone = jsonMap['phone'];
     address = jsonMap['address'];
     bio = jsonMap['bio'];
@@ -39,12 +39,12 @@ class User{
     var map = new Map<String, dynamic>();
     map["id"] = id;
     map["mobile"]=mobile;
-    map["referral_code"]=referralcode;
+    map["referral_code"]=referralCode;
     map["email"] = email;
     map["name"] = name;
     map["password"] = password;
     map["api_token"] = apiToken;
-    map['dob']=DateofBirth.toString();
+    map['dob']=dateOfBirth.toString();
     if (deviceToken != null) {
       map["device_token"] = deviceToken;
     }
@@ -55,17 +55,17 @@ class User{
     return map;
   }
 
-  Map DuplicateACMap(){
+  Map duplicateACMap(){
     var map = new Map<String, dynamic>();
     map['phone_number']=mobile;
     return map;
   }
 
-  Map ResetPasswordMap(){
+  Map resetPasswordMap(){
     var map = new Map<String, dynamic>();
     map['phone_number']=mobile;
     map["password"] = password;
-    map['password_confirmation']=ConfirmPassword;
+    map['password_confirmation']=confirmPassword;
     return map;
   }
   bool profileCompleted() {

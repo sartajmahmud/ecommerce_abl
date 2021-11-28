@@ -10,16 +10,16 @@ import 'dart:convert';
 import 'dart:io';
 
 
-Future<Stream<Product>> searchProducts(String search, Address address, String MinPrice,String MaxPrice) async {
+Future<Stream<Product>> searchProducts(String search, Address address, String minPrice,String maxPrice) async {
   Uri uri = Helper.getUri('api/products');
   Map<String, dynamic> _queryParams = {};
   _queryParams['search'] = 'name:$search;description:$search';
   _queryParams['searchFields'] = 'name:like;description:like';
   _queryParams['limit'] = '10';
   //_queryParams['zone_id'] = '${selectedzone.value.id}';
-  if(MinPrice!=null && MaxPrice!=null){
-    _queryParams['from_price'] = '$MinPrice';
-    _queryParams['to_price'] = '$MaxPrice';
+  if(minPrice!=null && maxPrice!=null){
+    _queryParams['from_price'] = '$minPrice';
+    _queryParams['to_price'] = '$maxPrice';
   }
 
   //  if (!address.isUnknown()) {

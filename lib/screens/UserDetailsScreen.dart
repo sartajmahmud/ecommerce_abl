@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/styles/colors.dart';
+
 class UserDetailsScreen extends StatefulWidget {
   UserDetailsScreen();
 
@@ -46,7 +46,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*.3,
+              height: MediaQuery.of(context).size.height*.39,
               decoration: BoxDecoration(
                 //color: Colors.grey
               ),
@@ -91,14 +91,51 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                         )
                       ],
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex:1,
+                          child: Icon(Icons.people,
+                            color: Colors.blue,size: 28,),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Text('Referral code',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Text('XY34S',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18
+                            ),),
+                        ),
+                        Expanded(
+                          flex:1,
+                          child: Icon(Icons.share,
+                            color: Colors.blue,size: 28,),
+                        ),
+                      ],
+                    ),
+                  ),
+
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(
-                elevation: 10,
+                elevation: 4,
                 child: Container(
                   child: Column(
                     children: [
@@ -147,6 +184,58 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                                     ),),
                                   SizedBox(height: 5,),
                                   Text('test@email.com'),
+                                ],
+                              ),
+                            ),
+                            Expanded(flex:1,child: IconButton(icon: Icon(Icons.edit,size: 28,), onPressed: (){})),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(flex:1,child: Icon(Icons.date_range,
+                              color: Colors.blue,size: 28,)),
+                            Expanded(
+                              flex: 4,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Date of Birth',
+                                    style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 18
+                                    ),),
+                                  SizedBox(height: 5,),
+                                  Text('10/02/1990'),
+                                ],
+                              ),
+                            ),
+                            Expanded(flex:1,child: IconButton(icon: Icon(Icons.edit,size: 28,), onPressed: (){})),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(flex:1,child: Icon(Icons.location_on,
+                              color: Colors.blue,size: 28,)),
+                            Expanded(
+                              flex: 4,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Default Location',
+                                    style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 18
+                                    ),),
+                                  SizedBox(height: 5,),
+                                  Text('Uttara, Dhaka'),
                                 ],
                               ),
                             ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grocery_app/styles/colors.dart';
-
 import 'navigator_item.dart';
 
 class DashboardScreen extends StatefulWidget {

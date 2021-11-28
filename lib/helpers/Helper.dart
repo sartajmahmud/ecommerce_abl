@@ -98,7 +98,7 @@ class Helper {
   }
 
   static int getIntData(Map<String, dynamic> data) {
-    return (int.parse(data['data'].toString()) as int) ?? 0;
+    return int.parse(data['data'].toString()) ?? 0;
   }
 
   Color getColorFromHex(String hex) {

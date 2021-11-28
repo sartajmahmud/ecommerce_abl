@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 
 
 class SignUpOTPScreen extends StatefulWidget {
-  String number;
-  UserController user;
+  final String number;
+  final UserController user;
   SignUpOTPScreen(this.number,this.user);
 
   @override
@@ -16,7 +16,7 @@ class SignUpOTPScreen extends StatefulWidget {
 }
 
 class _SignUpOTPScreenState extends State<SignUpOTPScreen> {
-  Future<String> OTPcode;
+  Future<String> oneTimePassword;
   String number;
   Future<String> validateOtp(String otp) async {
     String status;
@@ -38,19 +38,19 @@ class _SignUpOTPScreenState extends State<SignUpOTPScreen> {
     }
   }
 
-  Future<String> Getotp(String number) async {
-    String OTPCode;
+  Future<String> getOTP(String number) async {
+    String oneTimePassword;
     http.Response response=await http.post("http://test-ecom.com/api.php?apicall=otp",
         body: {'access':'123456','number':'$number'}
     );
 
     if(response.statusCode==200)
     {
-      OTPCode=json.decode(response.body)["message"].toString();
+      oneTimePassword=json.decode(response.body)["message"].toString();
       print(response.body);
-      print(OTPCode);
+      print(oneTimePassword);
     }
-    return OTPCode;
+    return oneTimePassword;
   }
 
 
@@ -60,7 +60,7 @@ class _SignUpOTPScreenState extends State<SignUpOTPScreen> {
 
   @override
   void initState() {
-    OTPcode= Getotp(widget.number);
+    oneTimePassword= getOTP(widget.number);
     number=widget.number;
     super.initState();
   }

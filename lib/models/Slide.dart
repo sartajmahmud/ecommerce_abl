@@ -1,8 +1,6 @@
 import 'package:grocery_app/models/Product.dart';
-
 import '../helpers/custom_trace.dart';
 import '../models/media.dart';
-import 'Seller.dart';
 import 'Seller.dart';
 
 class Slide {

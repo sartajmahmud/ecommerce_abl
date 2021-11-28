@@ -44,9 +44,9 @@ class Review {
     return this.toMap().toString();
   }
 
-  Map ofSellerToMap(Seller Seller) {
+  Map ofSellerToMap(Seller seller) {
     var map = this.toMap();
-    map["Seller_id"] = Seller.id;
+    map["Seller_id"] = seller.id;
     return map;
   }
 

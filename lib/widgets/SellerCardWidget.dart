@@ -3,8 +3,8 @@ import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/screens/SellerScreen.dart';
 
 class SellerCardWidget extends StatefulWidget {
-  String imagepath, name, location;
-  bool selected;
+  final String imagepath, name, location;
+  final bool selected;
 
   SellerCardWidget(this.name, this.imagepath, this.location, this.selected);
 

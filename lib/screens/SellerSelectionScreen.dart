@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/widgets/SellerCardWidget.dart';
 
-import 'PaymentMethodScreen.dart';
-
 class SellerSelectionScreen extends StatefulWidget {
   const SellerSelectionScreen();
 

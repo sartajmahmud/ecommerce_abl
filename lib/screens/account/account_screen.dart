@@ -35,11 +35,11 @@ class AccountScreen extends StatelessWidget {
                 ),
               ),
               Column(
-                children: getChildrenWithSeperator(
+                children: getChildrenWithSeparator(
                   widgets: accountItems.map((e) {
                     return getAccountItemWidget(e, context);
                   }).toList(),
-                  seperator: Divider(
+                  separator: Divider(
                     thickness: 1,
                   ),
                 ),

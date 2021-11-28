@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class ConfirmPasswordScreen extends StatefulWidget {
-  String number;
+  final String number;
   ConfirmPasswordScreen(this.number);
 
   @override

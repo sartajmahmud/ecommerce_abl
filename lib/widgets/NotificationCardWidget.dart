@@ -1,7 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/screens/NotificationDetailsScreen.dart';
 
 class NotificationCardWidget extends StatefulWidget {
   const NotificationCardWidget();
@@ -46,10 +45,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
               ),
               Expanded(
                 flex: 1,
-                child: IconButton(
-                  icon: Icon(Icons.notifications),
-                  iconSize: 45,
-                ),
+                child: Icon(Icons.notifications),
               ),
             ],
           ),
