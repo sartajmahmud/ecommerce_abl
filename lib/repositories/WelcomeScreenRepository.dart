@@ -1,12 +1,12 @@
 import 'dart:convert';
+
 import 'package:grocery_app/helpers/custom_trace.dart';
 import 'package:http/http.dart' as http;
 import 'package:grocery_app/helpers/Helper.dart';
-import 'package:grocery_app/models/Slide.dart';
+import 'package:grocery_app/models/WelcomeScreen.dart';
 
-Future<Stream<Slide>> getSlides() async {
-  Uri uri = Helper.getUri('api/sliders');
-
+Future<Stream<WelcomeScreen>> getWelcome() async {
+  Uri uri = Helper.getUri('api/welcomebanner');
   try {
     final client = new http.Client();
     final streamedRest = await client.send(http.Request('get', uri));
@@ -16,9 +16,9 @@ Future<Stream<Slide>> getSlides() async {
         .transform(json.decoder)
         .map((data) => Helper.getData(data))
         .expand((data) => (data as List))
-        .map((data) => Slide.fromJSON(data));
+        .map((data) => WelcomeScreen.fromJSON(data));
   } catch (e) {
     print(CustomTrace(StackTrace.current, message: uri.toString()).toString());
-    return new Stream.value(new Slide.fromJSON({}));
+    return new Stream.value(new WelcomeScreen.fromJSON({}));
   }
 }

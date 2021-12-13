@@ -3,9 +3,26 @@ import 'package:flutter/painting.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grocery_app/controllers/WelcomeScreenController.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  final String imagePath = "assets/images/welcom.jpg";
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends StateMVC<WelcomeScreen> {
+  WelcomeScreenController _con;
+
+  _WelcomeScreenState() : super(WelcomeScreenController()) {
+    _con = controller;
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _con.getWelcomeScreen();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +30,17 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 30),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(imagePath),
-              fit: BoxFit.none,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage(_con.welcomescreen.media.url),
+          //     fit: BoxFit.none,
+          //   ),
+          // ),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                //Text(_con.welcomeScreens.first.toString()),
                 Spacer(),
                 //icon(),
                 SizedBox(
