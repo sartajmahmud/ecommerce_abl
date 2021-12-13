@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/category_item.dart';
 
+import '../models/Category.dart';
+
 class CategoryItemCardWidget extends StatelessWidget {
   CategoryItemCardWidget({Key key, this.item, this.color = Colors.white})
       : super(key: key);
-  final CategoryItem item;
+  final Category item;
 
   final height = 200.0;
 
@@ -32,7 +34,7 @@ class CategoryItemCardWidget extends StatelessWidget {
         children: [
           Container(
             color: Colors.transparent,
-            height: 120,
+            height: 80,
             width: 120,
             child: imageWidget(),
           ),
@@ -54,8 +56,8 @@ class CategoryItemCardWidget extends StatelessWidget {
 
   Widget imageWidget() {
     return Container(
-      child: Image.asset(
-        item.imagePath,
+      child: Image.network(
+        item.media.url,
         fit: BoxFit.contain,
       ),
     );

@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
 import 'package:grocery_app/widgets/search_bar_widget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import '../../models/Product.dart';
 import 'home_banner_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,12 +62,12 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                       height: 25,
                     ),
                     padded(subTitle("Top Categories")),
-                    getHorizontalItemSlider(exclusiveOffers),
+                    //getHorizontalItemSlider(exclusiveOffers),
                     SizedBox(
                       height: 15,
                     ),
                     padded(subTitle("Today's Deal")),
-                    getHorizontalItemSlider(bestSelling),
+                    //getHorizontalItemSlider(bestSelling),
                     SizedBox(
                       height: 15,
                     ),
@@ -103,12 +104,12 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                     // SizedBox(
                     //   height: 15,
                     // ),
-                    getHorizontalItemSlider(groceries),
+                    //getHorizontalItemSlider(groceries),
                     SizedBox(
                       height: 15,
                     ),
                     padded(subTitle("Featured Products")),
-                    getHorizontalItemSlider(bestSelling),
+                    //getHorizontalItemSlider(bestSelling),
                     // SizedBox(
                     //   height: 15,
                     // ),
@@ -137,7 +138,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
     );
   }
 
-  Widget getHorizontalItemSlider(List<GroceryItem> items) {
+  Widget getHorizontalItemSlider(List<Product> items) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 250,
@@ -164,7 +165,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
     );
   }
 
-  void onItemClicked(BuildContext context, GroceryItem groceryItem) {
+  void onItemClicked(BuildContext context, Product groceryItem) {
     Navigator.push(
       context,
       MaterialPageRoute(

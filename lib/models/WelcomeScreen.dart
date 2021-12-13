@@ -16,13 +16,13 @@ class WelcomeScreen{
       name = jsonMap['name'] != null ? jsonMap['name'].toString() : '';
       media_id = jsonMap['media_id'] != null ? jsonMap['media_id'] : 0;
       order = jsonMap['order'] != null ? jsonMap['order'] : 1;
-      //media = jsonMap['media'] != null && (jsonMap['media'] as List).length > 0 ? Media.fromJSON(jsonMap['media'][0]) : new Media();
+      media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
 
     } catch (e) {
       id = 0;
       name = '';
       order = 0;
-      //media = Media();
+      media = Media();
       print(CustomTrace(StackTrace.current, message: e));
     }
   }

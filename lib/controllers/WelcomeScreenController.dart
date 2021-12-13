@@ -10,6 +10,7 @@ class WelcomeScreenController extends ControllerMVC{
   getWelcomeScreen() async {
     final Stream<WelcomeScreen> stream = await getWelcome();
     stream.listen((WelcomeScreen _slide) {
+      print("Media url "+_slide.media.url);
       setState(() => welcomeScreens.add(_slide));
     }, onError: (a) {
       print(a);

@@ -3,9 +3,11 @@ import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/styles/colors.dart';
 
+import '../models/Product.dart';
+
 class GroceryItemCardWidget extends StatelessWidget {
   GroceryItemCardWidget({Key key, this.item}) : super(key: key);
-  final GroceryItem item;
+  final Product item;
 
   final double width = 174;
   final double height = 250;
@@ -74,7 +76,7 @@ class GroceryItemCardWidget extends StatelessWidget {
 
   Widget imageWidget() {
     return Container(
-      child: Image.asset(item.imagePath),
+      child: Image.network(item.media.url),
     );
   }
 

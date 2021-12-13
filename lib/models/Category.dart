@@ -1,8 +1,10 @@
 
+import 'Media.dart';
+
 class Category {
   String id;
   String name;
-//  Media image;
+  Media media;
 
   Category();
 
@@ -10,12 +12,18 @@ class Category {
     try {
       id = jsonMap['id'].toString();
       name = jsonMap['name'];
-      //   image = jsonMap['media'] != null && (jsonMap['media'] as List).length > 0 ? Media.fromJSON(jsonMap['media'][0]) : new Media();
+      media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
     } catch (e) {
       id = '';
       name = '';
-      //  image = new Media();
+      media = new Media();
       //print(CustomTrace(StackTrace.current, message: e));
     }
+  }
+  Map toMap(){
+    var map = new Map<String, dynamic>();
+    map["id"] = id;
+    map["name"]=name;
+    return map;
   }
 }

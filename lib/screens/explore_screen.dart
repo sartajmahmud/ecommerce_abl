@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/models/category_item.dart';
+import 'package:grocery_app/controllers/CategoryController.dart';
 import 'package:grocery_app/widgets/category_item_card_widget.dart';
 import 'package:grocery_app/widgets/search_bar_widget.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import '../models/Category.dart';
 import 'category_items_screen.dart';
 
 List<Color> gridColors = [
@@ -18,18 +20,61 @@ List<Color> gridColors = [
   Color(0xffD73B77),
 ];
 
-class ExploreScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
+  @override
+  _CategoryScreenState createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends StateMVC<CategoryScreen> {
+  CategoryController _con;
+
+  _CategoryScreenState() : super(CategoryController()) {
+    _con = controller;
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _con.getCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Column(
-        children: [
-          getHeader(),
-          Expanded(
-            child: getStaggeredGridView(context),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            getHeader(),
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: _con.categories.asMap().entries.map<Widget>((e) {
+                  int index = e.key;
+                  Category categoryItem = e.value;
+                  return GestureDetector(
+                    onTap: () {
+                      onCategoryItemClicked(context, categoryItem);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: CategoryItemCardWidget(
+                        item: categoryItem,
+                        //color: gridColors[index % gridColors.length],
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            )
+          ],
+        ),
       ),
     ));
   }
@@ -58,39 +103,10 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 
-  Widget getStaggeredGridView(BuildContext context) {
-    return StaggeredGridView.count(
-      crossAxisCount: 4,
-      children: categoryItemsDemo.asMap().entries.map<Widget>((e) {
-        int index = e.key;
-        CategoryItem categoryItem = e.value;
-        return GestureDetector(
-          onTap: () {
-            onCategoryItemClicked(context, categoryItem);
-          },
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: CategoryItemCardWidget(
-              item: categoryItem,
-              //color: gridColors[index % gridColors.length],
-            ),
-          ),
-        );
-      }).toList(),
-
-      //Here is the place that we are getting flexible/ dynamic card for various images
-      staggeredTiles: categoryItemsDemo
-          .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-          .toList(),
-      mainAxisSpacing: 3.0,
-      crossAxisSpacing: 4.0, // add some space
-    );
-  }
-
-  void onCategoryItemClicked(BuildContext context, CategoryItem categoryItem) {
+  void onCategoryItemClicked(BuildContext context, Category category) {
     Navigator.of(context).push(new MaterialPageRoute(
       builder: (BuildContext context) {
-        return CategoryItemsScreen(categoryItem.name);
+        return CategoryItemsScreen(category);
       },
     ));
   }

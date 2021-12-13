@@ -30,12 +30,12 @@ class _WelcomeScreenState extends StateMVC<WelcomeScreen> {
         backgroundColor: Colors.black,
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 30),
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage(_con.welcomescreen.media.url),
-          //     fit: BoxFit.none,
-          //   ),
-          // ),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(_con.welcomeScreens[0].media.url),
+              fit: BoxFit.none,
+            ),
+          ),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.max,

@@ -2,19 +2,37 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/controllers/CategoryController.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import '../models/Category.dart';
+import '../models/Product.dart';
+import '../models/Product.dart';
 import 'filter_screen.dart';
 
 class CategoryItemsScreen extends StatefulWidget {
-  final String title;
+  final Category title;
   CategoryItemsScreen(this.title);
   @override
   _CategoryItemsScreenState createState() => _CategoryItemsScreenState();
 }
 
-class _CategoryItemsScreenState extends State<CategoryItemsScreen> {
+class _CategoryItemsScreenState extends StateMVC<CategoryItemsScreen> {
+
+  CategoryController _con;
+
+  _CategoryItemsScreenState() : super(CategoryController()) {
+    _con = controller;
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _con.getCategoriesProducts(widget.title);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +75,7 @@ class _CategoryItemsScreenState extends State<CategoryItemsScreen> {
             horizontal: 25,
           ),
           child: AppText(
-            text: widget.title,
+            text: widget.title.name,
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -66,8 +84,8 @@ class _CategoryItemsScreenState extends State<CategoryItemsScreen> {
       body: StaggeredGridView.count(
         crossAxisCount: 4,
         // I only need two card horizontally
-        children: beverages.asMap().entries.map<Widget>((e) {
-          GroceryItem groceryItem = e.value;
+        children: _con.categoryProducts.asMap().entries.map<Widget>((e) {
+          Product groceryItem = e.value;
           return GestureDetector(
             onTap: () {
               onItemClicked(context, groceryItem);
@@ -88,7 +106,7 @@ class _CategoryItemsScreenState extends State<CategoryItemsScreen> {
     );
   }
 
-  void onItemClicked(BuildContext context, GroceryItem groceryItem) {
+  void onItemClicked(BuildContext context, Product groceryItem) {
     Navigator.push(
       context,
       MaterialPageRoute(

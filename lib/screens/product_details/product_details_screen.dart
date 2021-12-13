@@ -8,10 +8,11 @@ import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/styles/colors.dart';
 import 'package:grocery_app/widgets/grocery_item_card_widget.dart';
 import 'package:grocery_app/widgets/item_counter_widget.dart';
+import '../../models/Product.dart';
 import 'favourite_toggle_icon_widget.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final GroceryItem groceryItem;
+  final Product groceryItem;
 
   const ProductDetailsScreen(this.groceryItem);
 
@@ -133,7 +134,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
                 SizedBox(height: 20,),
                 padded(subTitle("Related Products")),
-                getHorizontalItemSlider(exclusiveOffers),
+                //getHorizontalItemSlider(exclusiveOffers),
               ],
             ),
           ),
@@ -159,7 +160,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
     );
   }
-  void onItemClicked(BuildContext context, GroceryItem groceryItem) {
+  void onItemClicked(BuildContext context, Product groceryItem) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -167,7 +168,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  Widget getHorizontalItemSlider(List<GroceryItem> items) {
+  Widget getHorizontalItemSlider(List<Product> items) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 250,
@@ -240,7 +241,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             tileMode: TileMode.clamp),
       ),
       child: Image(
-        image: AssetImage(widget.groceryItem.imagePath),
+        image: NetworkImage(widget.groceryItem.media.url),
       ),
     );
   }

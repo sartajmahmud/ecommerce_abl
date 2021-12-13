@@ -1,119 +1,50 @@
 import 'package:grocery_app/models/Category.dart';
-import 'package:grocery_app/models/Seller.dart';
-import 'package:grocery_app/models/Extra.dart';
-import 'package:grocery_app/models/ExtraGroup.dart';
 import 'package:grocery_app/models/Media.dart';
-import 'package:grocery_app/models/Review.dart';
 
 class Product {
   String id;
+  String category_id;
+  String deliverable;
   String name;
   double price;
-  double discountPrice;
-  Media image;
+  double discounted_Price;
+  double delivery_fee;
+  String media_id;
   String description;
-
-  // String ingredients;
-  // String weight;
-//  String unit;
-//  String packageItemsCount;
-  // bool featured;
-  bool deliverable;
-  Seller seller;
   Category category;
-  List<Extra> extras;
-  List<ExtraGroup> extraGroups;
-  List<Review> foodReviews;
-  double deliveryfee;
-  //offer offerDetails;
-  int offerValidity = 0;
-  double discount;
+  Media media;
 
   Product();
 
   Product.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       id = jsonMap['id'].toString();
+      category_id = jsonMap['category_id'];
       name = jsonMap['name'];
       price = jsonMap['price'] != null ? jsonMap['price'].toDouble() : 0.0;
-      deliveryfee = jsonMap['delivery_fee'] != null ? double.parse(
+      delivery_fee = jsonMap['delivery_fee'] != null ? double.parse(
           jsonMap['delivery_fee'].toString()) : -1;
-      discountPrice = jsonMap['discount_price'] != null
-          ? jsonMap['discount_price'].toDouble()
+      discounted_Price = jsonMap['discounted_Price'] != null
+          ? jsonMap['discounted_Price'].toDouble()
           : 0.0;
-      discount = jsonMap['discount'] != null
-          ? double.parse(jsonMap['discount'].toString())
-          : 0.0;
-      //price = discountPrice != 0 ? discountPrice : price;
-      //discountPrice = discountPrice == 0 ? discountPrice : jsonMap['price'] != null ? jsonMap['price'].toDouble() : 0.0;
       description = jsonMap['description'];
-      // ingredients = jsonMap['ingredients'];
-      // weight = jsonMap['weight'] != null ? jsonMap['weight'].toString() : '';
-      // unit = jsonMap['unit'] != null ? jsonMap['unit'].toString() : '';
-      // packageItemsCount = jsonMap['package_items_count'].toString();
-      // featured = jsonMap['featured'] ?? false;
       deliverable = jsonMap['deliverable'] ?? false;
-      seller = jsonMap['restaurant'] != null
-          ? Seller.fromJSON(jsonMap['restaurant'])
-          : Seller.fromJSON({});
-      // if (jsonMap['offer'] != null) {
-      //   offerDetails = offer.fromJSON(jsonMap['offer']);
-      //   print("this is max ${offerDetails.MaxQuantity}");
-      //   offerValidity = 1;
-      // }
-      //  offerDetails = jsonMap['offer'] != null ? offer.fromJSON(jsonMap['offer']) : offer.fromJSON({});
+      media_id = jsonMap['media_id'];
       category = jsonMap['category'] != null
           ? Category.fromJSON(jsonMap['category'])
           : Category.fromJSON({});
-      image =
-      jsonMap['media'] != null && (jsonMap['media'] as List).length > 0
-          ? Media.fromJSON(
-          (jsonMap['media'][(jsonMap['media'] as List).length - 1]))
-          : new Media();
-      extras =
-      jsonMap['extras'] != null && (jsonMap['extras'] as List).length > 0
-          ? List.from(jsonMap['extras']).map((element) =>
-          Extra.fromJSON(element)).toSet().toList()
-          : [];
-      extraGroups = jsonMap['extra_groups'] != null &&
-          (jsonMap['extra_groups'] as List).length > 0
-          ? List.from(jsonMap['extra_groups']).map((element) =>
-          ExtraGroup.fromJSON(element)).toSet().toList()
-          : [];
-      foodReviews = jsonMap['food_reviews'] != null &&
-          (jsonMap['food_reviews'] as List).length > 0
-          ? List.from(jsonMap['food_reviews']).map((element) =>
-          Review.fromJSON(element)).toSet().toList()
-          : [];
+      media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
     } catch (e) {
       id = '';
       name = '';
       price = 0.0;
-      discountPrice = 0.0;
+      discounted_Price = 0.0;
       description = '';
-      deliveryfee = -1;
-      offerValidity = 1;
-      // weight = '';
-      // ingredients = '';
-      // unit = '';
-      // packageItemsCount = '';
-      // featured = false;
-      deliverable = false;
-      seller = Seller.fromJSON({});
+      delivery_fee = -1;
+      deliverable = '1';
       category = Category.fromJSON({});
-      //offerDetails = offer.fromJSON({});
-      image = new Media();
-      extras = [];
-      extraGroups = [];
-      foodReviews = [];
-      //print(CustomTrace(StackTrace.current, message: e));
+      media = new Media();
     }
-  }
-  double getRate() {
-    double _rate = 0;
-    foodReviews.forEach((e) => _rate += double.parse(e.rate));
-    _rate = _rate > 0 ? (_rate / foodReviews.length) : 0;
-    return _rate;
   }
 
   @override
