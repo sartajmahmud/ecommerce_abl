@@ -51,14 +51,14 @@ class ReviewsController extends ControllerMVC {
     });
   }
 
-  void addSellerReview(Review _review) async {
-    SellerRepo.addSellerReview(_review, this.order.productOrders[0].product.seller).then((value) {
-      refreshOrder();
-      scaffoldKey?.currentState?.showSnackBar(SnackBar(
-        content: Text("Seller has been successfully rated"),
-      ));
-    });
-  }
+  // void addSellerReview(Review _review) async {
+  //   SellerRepo.addSellerReview(_review, this.order.productOrders[0].product.seller).then((value) {
+  //     refreshOrder();
+  //     scaffoldKey?.currentState?.showSnackBar(SnackBar(
+  //       content: Text("Seller has been successfully rated"),
+  //     ));
+  //   });
+  // }
 
   Future<void> refreshOrder() async {
     listenForOrder(orderId: order.id, message: "Reviews refreshed successfully");

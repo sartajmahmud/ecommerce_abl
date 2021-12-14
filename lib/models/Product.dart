@@ -19,21 +19,23 @@ class Product {
   Product.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       id = jsonMap['id'].toString();
-      category_id = jsonMap['category_id'];
+      category_id = jsonMap['category_id'].toString();
+      deliverable = jsonMap['deliverable'].toString();
       name = jsonMap['name'];
       price = jsonMap['price'] != null ? jsonMap['price'].toDouble() : 0.0;
-      delivery_fee = jsonMap['delivery_fee'] != null ? double.parse(
-          jsonMap['delivery_fee'].toString()) : -1;
       discounted_Price = jsonMap['discounted_Price'] != null
           ? jsonMap['discounted_Price'].toDouble()
           : 0.0;
+      delivery_fee = jsonMap['delivery_fee'] != null ? double.parse(
+          jsonMap['delivery_fee'].toString()) : -1;
+      media_id = jsonMap['media_id'].toString();
       description = jsonMap['description'];
-      deliverable = jsonMap['deliverable'] ?? false;
-      media_id = jsonMap['media_id'];
+      media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
+
       category = jsonMap['category'] != null
           ? Category.fromJSON(jsonMap['category'])
           : Category.fromJSON({});
-      media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
+
     } catch (e) {
       id = '';
       name = '';

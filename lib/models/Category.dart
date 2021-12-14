@@ -4,6 +4,7 @@ import 'Media.dart';
 class Category {
   String id;
   String name;
+  String media_id;
   Media media;
 
   Category();
@@ -12,6 +13,7 @@ class Category {
     try {
       id = jsonMap['id'].toString();
       name = jsonMap['name'];
+      media_id = jsonMap['media_id'].toString();
       media = jsonMap['media'] != null ? Media.fromJSON(jsonMap['media']) : Media.fromJSON({});
     } catch (e) {
       id = '';

@@ -154,19 +154,19 @@ class CartController extends ControllerMVC {
         ),
       ));
     } else {
-      if (carts[0].product.seller.closed) {
-        scaffoldKey?.currentState?.showSnackBar(SnackBar(
-          content: Text("Sellership is closed"),
-        ));
-      }
-      else if(carts[0].product.deliverable==false){
-        scaffoldKey?.currentState?.showSnackBar(SnackBar(
-          content: Text("Product is not available"),
-        ));
-      }
-      else {
-        //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DeliveryPickupWidget(routeArgument: RouteArgument(param: CartController()))));
-      }
+      // if (carts[0].product.seller.closed) {
+      //   scaffoldKey?.currentState?.showSnackBar(SnackBar(
+      //     content: Text("Sellership is closed"),
+      //   ));
+      // }
+      // else if(carts[0].product.deliverable==false){
+      //   scaffoldKey?.currentState?.showSnackBar(SnackBar(
+      //     content: Text("Product is not available"),
+      //   ));
+      // }
+      // else {
+      //   //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DeliveryPickupWidget(routeArgument: RouteArgument(param: CartController()))));
+      // }
     }
   }
 

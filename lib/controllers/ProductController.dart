@@ -18,7 +18,7 @@ class ProductController extends ControllerMVC {
 
   bool isSameSeller(Product product) {
     if (carts.isNotEmpty) {
-      return carts[0].product?.seller?.id == product.seller?.id;
+      //return carts[0].product?.seller?.id == product.seller?.id;
     }
     return true;
   }
@@ -29,7 +29,6 @@ class ProductController extends ControllerMVC {
     });
     var _newCart = new Cart();
     _newCart.product = product;
-    _newCart.extras = product.extras.where((element) => element.checked).toList();
     _newCart.quantity = this.quantity;
     // if food exist in the cart then increment quantity
     var _oldCart = isExistInCart(_newCart);

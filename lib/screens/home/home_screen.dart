@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/controllers/HomeScreenController.dart';
 import 'package:grocery_app/models/grocery_item.dart';
 import 'package:grocery_app/screens/product_details/product_details_screen.dart';
@@ -63,15 +64,45 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                     ),
                     padded(subTitle("Top Categories")),
                     //getHorizontalItemSlider(exclusiveOffers),
+                    Container(
+                      height: 250.0,
+                      child: new ListView.builder(
+                        itemCount: _con.topCategoryProducts.length,
+                        itemBuilder: (context, index) {
+                          return sliderWidget(index,  _con.topCategoryProducts);
+                        },
+                        scrollDirection: Axis.horizontal,
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
                     padded(subTitle("Today's Deal")),
                     //getHorizontalItemSlider(bestSelling),
+                    Container(
+                      height: 250.0,
+                      child: new ListView.builder(
+                        itemCount: _con.todaysDealProducts.length,
+                        itemBuilder: (context, index) {
+                          return sliderWidget(index,  _con.todaysDealProducts);
+                        },
+                        scrollDirection: Axis.horizontal,
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
                     padded(subTitle("Flash Sale")),
+                    Container(
+                      height: 250.0,
+                      child: new ListView.builder(
+                        itemCount: _con.flashCategoryProducts.length,
+                        itemBuilder: (context, index) {
+                          return sliderWidget(index,  _con.flashCategoryProducts);
+                        },
+                        scrollDirection: Axis.horizontal,
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -109,6 +140,16 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                       height: 15,
                     ),
                     padded(subTitle("Featured Products")),
+                    Container(
+                      height: 250.0,
+                      child: new ListView.builder(
+                        itemCount: _con.featuredProducts.length,
+                        itemBuilder: (context, index) {
+                          return sliderWidget(index,  _con.featuredProducts);
+                        },
+                        scrollDirection: Axis.horizontal,
+                      ),
+                    ),
                     //getHorizontalItemSlider(bestSelling),
                     // SizedBox(
                     //   height: 15,
@@ -210,4 +251,84 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
       ],
     );
   }
+  Widget sliderWidget(int index, List prod){
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 174,
+        height: 250,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Color(0xffE2E2E2),
+          ),
+          borderRadius: BorderRadius.circular(
+            18,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 15,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Center(
+                  child: Image.network(prod[index].product.media.url),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              AppText(
+                text: prod[index].product.name,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              AppText(
+                text: prod[index].product.description,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF7C7C7C),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  AppText(
+                    text: "\৳${prod[index].product.price.toStringAsFixed(2)}",
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: (){
+                      //add to cart function here
+                    },
+                    child: Container(
+                      height: 45,
+                      width: 45,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(17),
+                          color: AppColors.primaryColor),
+                      child: Center(
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
+
